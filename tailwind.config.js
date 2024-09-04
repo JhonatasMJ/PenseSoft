@@ -11,6 +11,7 @@ export default {
       },
       colors: {
         'ciano': '#21B2D8',
+        'ciano-claro': '#0BA9D2',
         'azul': '#2E5077',
         'cinza': '#3A3A3A',
       },

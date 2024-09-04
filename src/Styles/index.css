@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-a {
+li a {
     position: relative;
   }
   
-  a::after {
+  li a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -19,7 +19,7 @@ a {
     -webkit-transition: width 0.3s ease;
   }
   
-  a:hover::after {
+  li a:hover::after {
     width: 100%;
     left: 0;
     background: #2E5077;

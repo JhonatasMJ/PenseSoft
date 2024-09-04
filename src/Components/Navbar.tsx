@@ -1,5 +1,6 @@
 
 import logo from '../assets/imgs/logotipo.svg';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 const Navbar = () => {
   return (
@@ -10,8 +11,8 @@ const Navbar = () => {
 
         <nav className='flex-1'>
           <ul className='flex justify-center text-white gap-6 font-semibold text-lg'>
-            <li><a className='.custom' href="/">Início</a></li>
-            <li><a href="/">Sobre</a></li>
+          <li className='cursor-pointer'><Link to="inicio" smooth={true} duration={500}>Inicio</Link></li>
+          <li className='cursor-pointer'><Link to="sobre" smooth={true} duration={500}>Sobre</Link></li>
             <li><a href="/">Funcionalidades</a></li>
             <li><a href="/">Vantagens</a></li>
           </ul>
