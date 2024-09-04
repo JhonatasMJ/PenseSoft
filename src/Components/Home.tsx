@@ -1,4 +1,4 @@
-import React from "react";
+
 import woman from '../assets/imgs/womanHome.png';
 
 const Home = () => {
