@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
-import Home from './Components/Home';
-import Vantagens from './Components/Vantagens';
+import Main from "./Pages/Main";
 import Orcamento from './Pages/Orcamento';
 import Splash from './Components/Splash';
 
@@ -25,8 +24,7 @@ const App = () => {
             element={
               <>
                 <Navbar />
-                <Home />
-                <Vantagens />
+                <Main /> 
               </>
             }
           />
