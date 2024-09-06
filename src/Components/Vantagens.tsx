@@ -1,5 +1,6 @@
 import { Banknote, BriefcaseBusiness, Handshake, MoveDown, UserPen } from "lucide-react";
 import { motion } from "framer-motion";
+import logo from '../assets/imgs/logotipo.svg';
 
 const cardData = [
   {
@@ -26,7 +27,7 @@ const cardData = [
 
 const Vantagens = () => {
   return (
-    <section className="bg-ciano relative" id="sobre">
+    <section className="bg-ciano relative" id="vantagens">
       <div className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 relative py-24 items-baseline gap-8">
 
         <div className="absolute inset-0 flex justify-center items-center bottom-full">
@@ -52,16 +53,18 @@ const Vantagens = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-ciano-claro p-6 rounded-md">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-ciano-claro p-6 rounded-md relative">
+        <img src={logo} alt="" className="absolute left-48p bottom-49p w-7 h-7 hidden md:flex"  />
           {cardData.map((card, index) => (
             <motion.div
               key={index}
-              className="bg-white p-4 rounded-md shadow-md"
+              className="bg-white p-4 rounded-md shadow-md "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 6, delay: index * 0.3 }}
             >
+             
               <motion.svg
                 initial={{ strokeDasharray: 100, strokeDashoffset: 100 }}
                 animate={{ strokeDashoffset: 0 }}

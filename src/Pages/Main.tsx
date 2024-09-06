@@ -2,6 +2,7 @@
 import React from 'react';
 import Home from '../Components/Home';
 import Vantagens from '../Components/Vantagens';
+import About from '../Components/About';
 // Importe outras seções que compõem a página principal
 
 const Main = () => {
@@ -9,6 +10,7 @@ const Main = () => {
     <>
       <Home />
       <Vantagens />
+      <About/>
     </>
   );
 };

@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <section className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 py-24">
+    <section className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 pb-44 pt-20 items-center">
       <motion.div
-        className="flex flex-col justify-center"
+        className="flex flex-col justify-center  mt-14"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
@@ -17,12 +17,12 @@ const Home = () => {
           Flexível, configurável e feito para o seu{" "}
           <span className="bg-ciano text-white px-1">sucesso.</span>
         </h1>
-        <p className="text-cinza text-base mt-8">
+        <p className="text-cinza text-lg mt-10">
           Um ERP que se adapta ao seu negócio, flexível, configurável e feito
           para o seu sucesso. A solução que seu negócio precisa, com atendimento
           humanizado.
         </p>
-        <div className="flex gap-8">
+        <div className="flex gap-8 mt-4">
           <motion.button
             className="w-max bg-ciano text-azul font-bold px-6 py-2 rounded-md mt-14 shadow-custom-ciano"
             whileHover={{ scale: 1.05 }}
@@ -48,7 +48,7 @@ const Home = () => {
         </div>
       </motion.div>
       <motion.div
-        className="flex flex-auto items-center justify-center"
+        className=" flex-auto items-center justify-center hidden md:flex"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
@@ -57,7 +57,7 @@ const Home = () => {
         <img
           src={woman}
           alt="Mulher segurando notebook"
-          className="w-full"
+          className="w-5/6"
         />
       </motion.div>
     </section>

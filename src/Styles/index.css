@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body, #vantagens {
+  background-image: url('../assets/imgs/bg-line.svg');
+}
+
+
+
 li a {
     position: relative;
   }

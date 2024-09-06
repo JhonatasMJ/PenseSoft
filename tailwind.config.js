@@ -16,10 +16,14 @@ export default {
         'cinza': '#3A3A3A',
       },
       backgroundImage: {
-        'lines': "url('./assets/imgs/bg-line.svg')",
+        'teste': "url('./assets/imgs/womanHome.png')",
       },
       boxShadow: {
         'custom-ciano': '0 8px 20px -1px rgba(33, 178, 216, 0.5)',
+      },
+      inset: {
+        '48p': '48%',
+        '49p': '49%',
       },
     },
   },
