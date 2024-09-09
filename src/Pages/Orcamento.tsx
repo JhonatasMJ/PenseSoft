@@ -126,7 +126,7 @@ const Orcamento = () => {
 							value={usuarios}
 							onChange={(e) =>
 								setUsuarios(Number(e.target.value))
-							} // Certifique-se de converter para número
+							} 
 							className="w-full border border-gray-300 rounded-md p-2"
 						/>
 					</div>

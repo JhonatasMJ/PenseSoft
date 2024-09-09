@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import logo from '../assets/imgs/logotipo.svg';
 
+
 const Splash = ({ onAnimationComplete }: { onAnimationComplete: () => void }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -12,7 +13,7 @@ const Splash = ({ onAnimationComplete }: { onAnimationComplete: () => void }) =>
   }, [onAnimationComplete]);
 
   return (
-    <motion.div
+    <motion.div id="animation"
       initial={{ x: "-100vw", opacity: 1 }} // O fundo azul começa fora da tela à esquerda
       animate={{ x: 0, opacity: 1 }} // Move o fundo azul para o centro e mantém visível
       exit={{ x: "100vw", opacity: 0 }} // Move o fundo azul para fora da tela à direita e torna-o invisível
