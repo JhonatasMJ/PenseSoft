@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body, #vantagens {
+body, #vantagens,#boost, #animation {
   background-image: url('../assets/imgs/bg-line.svg');
 }
 
@@ -31,3 +31,15 @@ li a {
     background: #2E5077;
   }
   
+/* 
+  #boost {
+    box-shadow: inset 0 100px #ffff; 
+  } */
+
+  #img::before {
+    content: '';
+    background-image: url('../assets/imgs/arrow.svg');
+    display: block;
+    position: absolute;
+    width: 149;
+  }
