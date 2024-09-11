@@ -32,35 +32,38 @@ const Orcamento = () => {
 						alt="imagem de um prédio"
 						className="w-[90%] h-auto m-0 p-0"
 					/>
-					<form className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-						<div>
-							{/* <label
-								htmlFor="nome"
-								className="block font-semibold mb-2"
-							>
-								Nome:
-							</label> */}
-
+					<form className="gap-6">
+						<p className="font-extrabold border-l-8 border-ciano pl-2 mb-8">
+							DADOS PESSOAIS
+						</p>
+						<div className="flex flex-row justify-between gap-6">
 							<input
 								type="text"
 								id="nome"
 								placeholder="Insira seu nome"
-								className="w-full border border-gray-300 rounded-md p-2 h-12"
+								className="w-full border border-gray-300 rounded-md p-2 h-12 bg-gray-50 mb-8 text-gray-700"
 							/>
-						</div>
-
-						<div>
-							{/* <label
-								htmlFor="telefone"
-								className="block font-semibold mb-2"
-							>
-								Seu melhor número:
-							</label> */}
 							<input
 								type="text"
 								id="email"
 								placeholder="Insira seu email"
-								className="w-full border border-gray-300 rounded-md p-2 h-12"
+								className="w-full border border-gray-300 rounded-md p-2 h-12 bg-gray-100 mb-8"
+							/>
+						</div>
+
+						<div>
+							<label
+								htmlFor="nome"
+								className="block font-semibold mb-2"
+							>
+								Insira seu melhor número
+							</label>
+							<input
+								type="tel"
+								id="telefone"
+								pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}"
+								placeholder="(00) 0 0000-0000"
+								className="w-full border border-gray-300 rounded-md p-2 h-12 bg-gray-50 mb-8 text-gray-700"
 							/>
 						</div>
 
@@ -74,15 +77,15 @@ const Orcamento = () => {
 							<textarea
 								id="mensagem"
 								placeholder="Insira sua mensagem"
-								className="w-full border border-gray-300 rounded-md p-2"
+								className="w-full border border-gray-300 rounded-md p-2 h-40 bg-gray-50"
 							></textarea>
 						</div>
 
-						<div className="col-span-2">
+						<div className="flex flex-col">
 							<label className="block font-semibold mb-2">
-								Regime tributário:
+								Onde hospedara o ERP
 							</label>
-							<div className="flex gap-4">
+							<div className="flex flex-col gap-4">
 								<div>
 									<input
 										type="radio"
@@ -155,8 +158,8 @@ const Orcamento = () => {
 							/>
 						</div>
 
-						<div className="col-span-2 flex justify-center">
-							<button className="bg-ciano text-white font-bold px-6 py-2 rounded-md mt-4">
+						<div className="flex justify-left">
+							<button className="bg-blue-900 text-white font-bold px-6 py-2 rounded-md mt-4 h-12">
 								ENVIAR ORÇAMENTO
 							</button>
 						</div>
