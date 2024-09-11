@@ -14,6 +14,7 @@ export default {
         'ciano-claro': '#0BA9D2',
         'azul': '#2E5077',
         'cinza': '#3A3A3A',
+        'azul-escuro': '#2e5077',
       },
       backgroundImage: {
         'teste': "url('./assets/imgs/womanHome.png')",

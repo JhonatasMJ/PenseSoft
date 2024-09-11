@@ -1,22 +1,23 @@
 // src/Components/MainComponent.js
-import React from 'react';
 import Home from '../Components/Home';
 import Vantagens from '../Components/Vantagens';
 import About from '../Components/About';
 import Boost from '../Components/Boost';
 import Funcionalidades from '../Components/Funcionalidades';
+import Footer from '../Components/Footer';
 // Importe outras seções que compõem a página principal
 
 const Main = () => {
-  return (
-    <>
-      <Home />
-      <Vantagens />
-      <About/>
-      <Boost/>
-      <Funcionalidades/>
-    </>
-  );
+	return (
+		<>
+			<Home />
+			<Vantagens />
+			<About />
+			<Boost />
+			<Funcionalidades />
+			<Footer />
+		</>
+	);
 };
 
 export default Main;

@@ -158,7 +158,7 @@ const Orcamento = () => {
 						</div>
 
 						<div className="flex justify-left">
-							<button className="bg-blue-900 text-white font-bold px-6 py-2 rounded-md mt-4 h-12">
+							<button className="bg-azul-escuro text-white font-bold px-6 py-2 rounded-md mt-4 h-12">
 								ENVIAR ORÇAMENTO
 							</button>
 						</div>
