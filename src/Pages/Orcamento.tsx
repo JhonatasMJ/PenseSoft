@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import build from '../assets/imgs/Rectangle 39.png';
 
@@ -125,23 +124,23 @@ const Orcamento = () => {
 							</div>
 						</div>
 
-					<div>
-						<label
-							htmlFor="usuarios"
-							className="block font-semibold mb-2"
-						>
-							Número de usuários do sistema:
-						</label>
-						<input
-							type="number"
-							id="usuarios"
-							value={usuarios}
-							onChange={(e) =>
-								setUsuarios(Number(e.target.value))
-							} // Certifique-se de converter para número
-							className="w-full border border-gray-300 rounded-md p-2"
-						/>
-					</div>
+						<div>
+							<label
+								htmlFor="usuarios"
+								className="block font-semibold mb-2"
+							>
+								Número de usuários do sistema:
+							</label>
+							<input
+								type="number"
+								id="usuarios"
+								value={usuarios}
+								onChange={(e) =>
+									setUsuarios(Number(e.target.value))
+								} // Certifique-se de converter para número
+								className="w-full border border-gray-300 rounded-md p-2"
+							/>
+						</div>
 
 						<div>
 							<label
