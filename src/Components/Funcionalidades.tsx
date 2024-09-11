@@ -103,7 +103,7 @@ const Funcionalidades = () => {
 										{lista.title}
 									</h3>
 
-									{/* Pareando subtítulos e tópicos */}
+									{/* Exibindo os subtítulos e tópicos */}
 									{lista.subtitles &&
 										lista.subtitles.map((subtitle, idx) => (
 											<div key={idx} className="mt-6">
@@ -116,12 +116,21 @@ const Funcionalidades = () => {
 											</div>
 										))}
 
-									{/* Exibindo a imagem */}
-									<img
-										src={lista.img}
-										alt="Imagem decorativa"
-										className="mt-6 w-full h-auto rounded-md shadow-lg"
-									/>
+									{/* Exibindo a imagem com borda 3D */}
+									<div className="relative mt-10 w-full h-auto">
+										{/* Borda com efeito 3D */}
+										<div
+											className="absolute top-[-10px] left-[-10px] w-[95%] h-[90%] 
+                            border-l-8 border-t-8 border-ciano transform translate-x-[-10px] translate-y-[-10px]"
+											aria-hidden="true"
+										></div>
+										{/* Imagem */}
+										<img
+											src={lista.img}
+											alt="Imagem decorativa"
+											className="relative z-10 w-full h-auto rounded-md shadow-lg"
+										/>
+									</div>
 								</div>
 							)
 					)}
