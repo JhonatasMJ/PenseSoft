@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
 	return (
-		<section className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 pb-44 pt-20 items-center">
+		<section className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 pb-44 pt-20 items-center " id='inicio'>
 			<motion.div
 				className="flex flex-col justify-center  mt-14"
 				initial={{ opacity: 0, x: -50 }}
