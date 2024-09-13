@@ -19,12 +19,10 @@ const Navbar = () => {
         <img src={logo} alt="Logotipo" className="h-10" />
 
         {/* Ícone do menu para dispositivos móveis */}
-        <div className="lg:hidden z-50">
+        <div className="lg:hidden flex items-center">
           <button
             onClick={toggleMenu}
-            className={`text-white transition-transform duration-300 ${
-              isOpen ? 'rotate-90' : ''
-            }`}
+            className={`text-white transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
           >
             {isOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
@@ -34,7 +32,7 @@ const Navbar = () => {
         <nav
           className={`${
             isOpen ? "block" : "hidden"
-          } lg:flex flex-1 justify-between items-center text-white gap-6 font-semibold text-lg lg:static absolute top-[70px] left-0 w-full lg:w-auto lg:bg-transparent bg-ciano transition-all duration-300 ease-in-out`}
+          } lg:flex flex-1 justify-center items-center text-white gap-6 font-semibold text-lg lg:static absolute top-[70px] left-0 w-full lg:w-auto lg:bg-transparent bg-ciano transition-all duration-300 ease-in-out`}
           style={{ zIndex: isOpen ? 40 : 10 }}
         >
           <ul className="flex flex-col lg:flex-row gap-6 lg:items-center text-center lg:text-left p-4 lg:p-0">
@@ -98,9 +96,18 @@ const Navbar = () => {
                 Vantagens
               </ScrollLink>
             </li>
+            {/* Botão Orçamento dentro do menu hambúrguer */}
+            <li className="lg:hidden mt-4">
+              <Link to="/orcamento">
+                <button className="bg-azul text-white font-bold px-4 py-2 rounded">
+                  Orçamento
+                </button>
+              </Link>
+            </li>
           </ul>
         </nav>
 
+        {/* Botão Orçamento para dispositivos grandes */}
         <Link to="/orcamento" className="hidden lg:block">
           <button className="bg-azul text-white font-bold px-4 py-2 rounded">
             Orçamento

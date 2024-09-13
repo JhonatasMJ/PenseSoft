@@ -23,29 +23,29 @@ const About = () => {
           <span className="text-ciano font-extrabold">Nossa missão </span> é fornecer sistemas de gestão ERP que se integram perfeitamente às operações dos nossos clientes, proporcionando uma experiência de gestão fluida e eficiente. Fazemos a tecnologia trabalhar a favor do seu negócio, garantindo que você tenha todas as ferramentas necessárias para prosperar em um ambiente competitivo.
 
         </p>
-        <div className="flex gap-8">
+        <div className="flex  gap-8 md:gap-8">
           <motion.button
-            className="w-max bg-ciano text-azul font-bold px-6 py-3 rounded-md mt-14 shadow-custom-ciano"
+            className="w-max bg-ciano text-azul font-bold px-8 py-2 md:px-6 md:py-3 rounded-md mt-14 shadow-custom-ciano"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a className="flex items-center gap-2" href="/">
-              ENTRE EM CONTATO
+            <a className="flex items-center gap-2 " href="/">
+              CONTATO
               <motion.div
                 whileHover={{ rotate: 360 }} 
                 transition={{ duration: 0.5 }}
               >
-                <Phone size={20}/>
+                <Phone className="hidden md:block" size={20}/>
               </motion.div>
             </a>
           </motion.button>
           <motion.button
-            className="w-max bg-azul text-white font-bold rounded-md px-6 py-3 mt-14"
+            className="w-max bg-azul text-white font-bold rounded-md text-sm  py-4   px-4 md:px-6 md:py-3 mt-14"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a className="flex items-center gap-2" href="/">FUNCIONALIDADES 
-            <MonitorCog/>
+            <a className="flex items-center gap-2 text-sm" href="/">FUNCIONALIDADES 
+            <MonitorCog className="hidden md:block"/>
             </a>
            
           </motion.button>
@@ -61,7 +61,7 @@ const About = () => {
         <img
           src={men}
           alt="Homem segurando notebook"
-          className="w-full"
+          className="hidden md:block  w-full"
         />
       </motion.div>
     </section>

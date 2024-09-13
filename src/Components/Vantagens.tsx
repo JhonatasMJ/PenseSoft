@@ -60,7 +60,7 @@ const Vantagens = () => {
 
 				<div>
 					<span className="text-azul font-semibold">Saiba</span>
-					<h2 className="text-4xl font-bold text-white mt-2">
+					<h2 className="text-3xl  md:text-4xl font-bold text-white mt-2">
 						Porque devo escolher o nosso sistema ERP?
 					</h2>
 					<p className="text-lg text-cinza mt-14">
@@ -72,7 +72,7 @@ const Vantagens = () => {
 						para você, sem comprometer os processos que tornam sua
 						empresa única.
 					</p>
-					<button className="bg-azul text-white font-bold px-6 py-3 rounded-md w-max mt-16">
+					<button className="bg-azul text-white font-bold px-4  md:px-6 py-3 rounded-md w-max mt-16">
 						<a className="text-md" href="/">
 							VEJA QUANTO VOCÊ PODE ECONOMIZAR
 						</a>

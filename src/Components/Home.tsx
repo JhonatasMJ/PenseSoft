@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
 	return (
-		<section className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 pb-44 pt-20 items-center " id='inicio'>
+		<section className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2  pb-24 pt-10 md:pb-44 md:pt-20 items-center " id='inicio'>
 			<motion.div
 				className="flex flex-col justify-center  mt-14"
 				initial={{ opacity: 0, x: -50 }}
@@ -15,7 +15,7 @@ const Home = () => {
 				<span className="text-lg font-semibold text-black">
 					Bem-vindo(a)👋
 				</span>
-				<h1 className="text-5xl text-cinza font-bold mt-2">
+				<h1 className=" text-3xl md:text-5xl  text-cinza font-bold mt-2">
 					Flexível, configurável e feito para o seu{' '}
 					<span className="bg-ciano text-white px-1">sucesso.</span>
 				</h1>
@@ -26,11 +26,11 @@ const Home = () => {
 				</p>
 				<div className="flex gap-8 mt-4">
 					<motion.button
-						className="w-max bg-ciano text-azul font-bold px-6 py-2 rounded-md mt-14 shadow-custom-ciano"
+						className="w-max bg-ciano text-azul font-bold px-4  py-4 md:text-base   md:px-12 md:py-3  rounded-md mt-14 shadow-custom-ciano"
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
-						<a className="flex items-center gap-2" href="/">
+						<a className="flex items-center  md:gap-3 md:text-base text-sm" href="/">
 							SAIBA MAIS
 							<motion.div
 								whileHover={{ rotate: 360 }}
@@ -41,7 +41,7 @@ const Home = () => {
 						</a>
 					</motion.button>
 					<motion.button
-						className="w-max bg-azul text-white font-bold rounded-md px-6 py-2 mt-14"
+						className="w-max bg-azul text-white font-bold rounded-md px-6 py-2 mt-14 text-sm  md:px-12 md:py-3"
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
