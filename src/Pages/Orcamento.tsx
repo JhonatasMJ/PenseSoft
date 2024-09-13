@@ -218,7 +218,7 @@ const Orcamento = () => {
 										label="Faturamento anual estimado*"
 									>
 										<MenuItem value="Menos de R$ 1 milhão">
-											Até R$ 1 milhão
+											Menos de R$ 1 milhão
 										</MenuItem>
 										<MenuItem value="De R$ 1 milhão a R$ 3 milhões">
 											De R$ 1 milhão a R$ 3 milhões
