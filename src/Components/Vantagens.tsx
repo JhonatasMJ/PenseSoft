@@ -38,7 +38,7 @@ const cardData = [
 const Vantagens = () => {
 	return (
 		<section className="bg-ciano relative" id="vantagens">
-			<div className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 relative py-24 items-baseline gap-8">
+			<div className="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-2 relative py-24 items-baseline gap-8">
 				<div className="absolute inset-0 flex justify-center items-center bottom-full">
 					<motion.div className="bg-cyan-50 rounded-full p-6">
 						<motion.div
@@ -72,8 +72,8 @@ const Vantagens = () => {
 						para você, sem comprometer os processos que tornam sua
 						empresa única.
 					</p>
-					<button className="bg-azul text-white font-bold px-4  md:px-6 py-3 rounded-md w-max mt-16">
-						<a className="text-md" href="/">
+					<button className="bg-azul text-white font-bold  w-full md:w-max   md:px-6  py-3 rounded-md  mt-16">
+						<a className="text-sm md:text-md" href="/">
 							VEJA QUANTO VOCÊ PODE ECONOMIZAR
 						</a>
 					</button>

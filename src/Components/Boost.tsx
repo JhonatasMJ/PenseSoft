@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Boost = () => {
   return (
     <section className=" bg-ciano" id="boost">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2  relative py-6   px-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2  relative py-6   px-4">
       <motion.div
         className="flex flex-col justify-center "
         initial={{ opacity: 0, x: -50 }}
@@ -43,7 +43,7 @@ const Boost = () => {
         </div>
       </motion.div>
       <motion.div 
-        className="hidden  md:flex justify-end absolute right-0 bottom-0 "
+        className="hidden  md:flex justify-end absolute   right-0 bottom-0 "
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
@@ -51,11 +51,11 @@ const Boost = () => {
       >
         <img id="img"
           src={boost}
-          alt="Homem segurando notebook"
-          className=" hidden md:block  w-full "
+          alt="Mulher segurando notebook"
+          className=" hidden md:w-5/6 lg:block  w-full "
         />
         <div className="absolute bottom-36 -left-28  hidden md:flex">
-            <img className="w-32 h-32"  src={arrow} alt="Seta decorativa" />
+            <img className="hidden lg:block w-32 h-32"  src={arrow} alt="Seta decorativa" />
         </div>
       </motion.div>
       </div>

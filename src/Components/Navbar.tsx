@@ -1,4 +1,3 @@
-// src/Components/Navbar.js
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import logo from '../assets/imgs/logotipo.svg';
@@ -14,8 +13,8 @@ const Navbar = () => {
 	const toggleMenu = () => setIsOpen(!isOpen);
 
 	return (
-		<div className="bg-ciano fixed top-0 left-0 w-full z-50">
-			<header className="flex items-center justify-between max-w-7xl mx-auto p-4">
+		<div className="bg-ciano fixed top-0 left-0 w-full z-50 shadow-lg ">
+			<header className="flex items-center justify-between max-w-7xl mx-auto p-4 ">
 				<img src={logo} alt="Logotipo" className="h-10" />
 
 				{/* Ícone do menu para dispositivos móveis */}
@@ -30,11 +29,10 @@ const Navbar = () => {
 					</button>
 				</div>
 
-				{/* Menu de navegação */}
 				<nav
 					className={`${
 						isOpen ? 'block' : 'hidden'
-					} lg:flex flex-1 justify-center items-center text-white gap-6 font-semibold text-lg lg:static absolute top-[70px] left-0 w-full lg:w-auto lg:bg-transparent bg-ciano transition-all duration-300 ease-in-out`}
+					} lg:flex flex-1 justify-center items-center text-white gap-6 font-semibold text-lg lg:static absolute top-[70px] left-0 w-full lg:w-auto lg:bg-transparent bg-ciano transition-all duration-300 ease-in-out `}
 					style={{ zIndex: isOpen ? 40 : 10 }}
 				>
 					<ul className="flex flex-col lg:flex-row gap-6 lg:items-center text-center lg:text-left p-4 lg:p-0">
@@ -60,6 +58,16 @@ const Navbar = () => {
 										Sobre
 									</ScrollLink>
 								</li>
+								<li className="cursor-pointer">
+									<ScrollLink
+										to="funcionalidades"
+										smooth={true}
+										duration={500}
+										onClick={toggleMenu}
+									>
+										Funcionalidades
+									</ScrollLink>
+								</li>
 							</>
 						) : (
 							<>
@@ -81,13 +89,17 @@ const Navbar = () => {
 										Sobre
 									</Link>
 								</li>
+								<li>
+									<Link
+										to="/"
+										state={{ scrollTo: 'funcionalidades' }}
+										onClick={toggleMenu}
+									>
+										Funcionalidades
+									</Link>
+								</li>
 							</>
 						)}
-						<li>
-							<Link to="/funcionalidades" onClick={toggleMenu}>
-								Funcionalidades
-							</Link>
-						</li>
 						<li className="cursor-pointer">
 							<ScrollLink
 								to="vantagens"

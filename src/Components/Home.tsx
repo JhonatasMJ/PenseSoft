@@ -1,12 +1,13 @@
 import { Plus } from 'lucide-react';
 import woman from '../assets/imgs/womanHome.png';
 import { motion } from 'framer-motion';
+import { Link as ScrollLink } from 'react-scroll'; 
 
 const Home = () => {
 	return (
-		<section className="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2  pb-24 pt-10 md:pb-44 md:pt-20 items-center " id='inicio'>
+		<section className="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-2  pb-24 pt-10 md:pb-44 md:pt-20 items-center " id="inicio">
 			<motion.div
-				className="flex flex-col justify-center  mt-14"
+				className="flex flex-col justify-center mt-14"
 				initial={{ opacity: 0, x: -50 }}
 				whileInView={{ opacity: 1, x: 0 }}
 				transition={{ duration: 1 }}
@@ -30,15 +31,21 @@ const Home = () => {
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
-						<a className="flex items-center  md:gap-3 md:text-base text-sm" href="/">
-							SAIBA MAIS
+						<ScrollLink
+							to="funcionalidades" // The ID of the section to scroll to
+							smooth={true}
+							duration={500}
+							offset={-50} // Optional: Adjusts the final position
+							className="flex items-center  md:gap-3 md:text-base text-sm cursor-pointer"
+						>
+							Saiba mais
 							<motion.div
 								whileHover={{ rotate: 360 }}
 								transition={{ duration: 0.5 }}
 							>
 								<Plus size={20} />
 							</motion.div>
-						</a>
+						</ScrollLink>
 					</motion.button>
 					<motion.button
 						className="w-max bg-azul text-white font-bold rounded-md px-6 py-2 mt-14 text-sm  md:px-12 md:py-3"
@@ -59,7 +66,7 @@ const Home = () => {
 				<img
 					src={woman}
 					alt="Mulher segurando notebook"
-					className="w-5/6"
+					className="hidden lg:block  w-5/6"
 				/>
 			</motion.div>
 		</section>

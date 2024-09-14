@@ -82,7 +82,7 @@ const Orcamento = () => {
 	return (
 		<>
 			<>
-				<section className="bg-ciano relative " id="orcamento">
+				<section className="bg-ciano relative px-4 " id="orcamento">
 					<div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-1 relative pb-48 items-baseline gap-4">
 						<h2 className="text-2xl font-bold text-cinza mb-0 mt-2">
 							Faça um
@@ -90,7 +90,7 @@ const Orcamento = () => {
 						<h1 className="text-4xl text-white font-bold mt-6">
 							Orçamento
 						</h1>
-						<p className="text-white text-lg mt-6 w-[60%]">
+						<p className="text-white w-full text-base md:text-lg mt-6 md:w-[60%]">
 							Quer saber mais sobre nossas soluções ou discutir
 							como podemos ajudar o seu negócio a crescer? Estamos
 							aqui para responder às suas dúvidas e oferecer o
@@ -106,7 +106,7 @@ const Orcamento = () => {
 					<img
 						src={background}
 						alt="imagem de um prédio"
-						className="w-full h-full object-cover m-0 p-0"
+						className="hidden md:block md:w-full md:h-full object-cover m-0 p-0"
 					/>
 
 					<form
@@ -868,7 +868,7 @@ const Orcamento = () => {
 								</FormHelperText>
 							)}
 						</FormControl>
-						<Button
+						<Button 
 							sx={{
 								backgroundColor: '#2e5077',
 								marginTop: '1rem',
@@ -876,14 +876,17 @@ const Orcamento = () => {
 								height: '3.5rem',
 								fontWeight: 'bold',
 								fontSize: '1.2rem',
-								transition: 'all 0.3s ease', // Transição suave
+								transition: 'all 0.3s ease', 
 								'&:hover': {
-									backgroundColor: '#21B2D8', // Cor ao passar o mouse
-									transform: 'scale(1.05)', // Aumenta o tamanho em 5%
+									backgroundColor: '#21B2D8', 
+									transform: 'scale(1.05)', 
 								},
 							}}
 							type="submit"
 							variant="contained"
+				
+							
+						
 						>
 							ENVIAR ORÇAMENTO
 						</Button>
