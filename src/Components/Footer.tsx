@@ -5,7 +5,7 @@ import { Link as ScrollLink } from 'react-scroll';
 
 const Footer = () => {
 	return (
-		<footer className="bg-ciano py-2">
+		<footer className="bg-ciano py-2 px-4">
 			<div className="max-w-7xl mx-auto flex items-center justify-between text-white">
 				<div className="text-center md:text-left mb-4 md:mb-0">
 					<img src={logo} alt="Logotipo" className="h-8 md:h-10" />

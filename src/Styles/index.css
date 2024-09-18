@@ -6,8 +6,6 @@ body, #vantagens,#boost, #animation {
   background-image: url('../assets/imgs/bg-line.svg');
 }
 
-
-
 li a {
     position: relative;
   }
@@ -31,10 +29,10 @@ li a {
     background: #2E5077;
   }
   
-/* 
-  #boost {
-    box-shadow: inset 0 100px #ffff; 
-  } */
+  button li a:hover::after   {
+    width: 0%;
+  }
+
 
   #img::before {
     content: '';

@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import logo from '../assets/imgs/logotipo.svg';
+import { Link } from 'react-router-dom';
 
 const cardData = [
 	{
@@ -72,11 +73,16 @@ const Vantagens = () => {
 						para você, sem comprometer os processos que tornam sua
 						empresa única.
 					</p>
-					<button className="bg-azul text-white font-bold  w-full md:w-max   md:px-6  py-3 rounded-md  mt-16">
-						<a className="text-sm md:text-md" href="/">
-							VEJA QUANTO VOCÊ PODE ECONOMIZAR
-						</a>
-					</button>
+					<motion.button
+						className="bg-azul text-white font-bold  w-full md:w-max   md:px-6  py-3 rounded-md  mt-16"
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}
+					>
+						<Link to="/orcamento">
+							VEJA O QUANTO VOCÊ PODE ECONOMIZAR
+						</Link>
+					</motion.button>
+		
 				</div>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-ciano-claro p-6 rounded-md relative">

@@ -1,7 +1,8 @@
 import { Plus } from 'lucide-react';
-import woman from '../assets/imgs/womanHome.png';
+import woman from '../assets/imgs/womanHome.webp';
 import { motion } from 'framer-motion';
-import { Link as ScrollLink } from 'react-scroll'; 
+import { Link as ScrollLink } from 'react-scroll';
+import { Link } from 'react-router-dom'; 
 
 const Home = () => {
 	return (
@@ -32,10 +33,10 @@ const Home = () => {
 						whileTap={{ scale: 0.95 }}
 					>
 						<ScrollLink
-							to="funcionalidades" // The ID of the section to scroll to
+							to="funcionalidades"
 							smooth={true}
 							duration={500}
-							offset={-50} // Optional: Adjusts the final position
+							offset={-50}
 							className="flex items-center  md:gap-3 md:text-base text-sm cursor-pointer"
 						>
 							Saiba mais
@@ -47,12 +48,16 @@ const Home = () => {
 							</motion.div>
 						</ScrollLink>
 					</motion.button>
+
+					
 					<motion.button
 						className="w-max bg-azul text-white font-bold rounded-md px-6 py-2 mt-14 text-sm  md:px-12 md:py-3"
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
-						<a href="/">ORÇAMENTO</a>
+						<Link to="/orcamento">
+							Orçamento
+						</Link>
 					</motion.button>
 				</div>
 			</motion.div>
