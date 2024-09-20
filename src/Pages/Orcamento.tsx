@@ -7,6 +7,8 @@ import { SimpleTreeView, TreeItem } from '@mui/x-tree-view';
 import { ChevronUp } from 'lucide-react';
 import logo from '../assets/imgs/logotipo.svg';
 import { Link as ScrollLink } from 'react-scroll';
+import { styled } from '@mui/material/styles';
+
 import {
 	TextField,
 	Button,
@@ -79,6 +81,16 @@ const Orcamento = () => {
 		console.log(data);
 	};
 
+	const ResponsiveInputLabel = styled(InputLabel)(({ theme }) => ({
+		fontSize: '1rem', // Tamanho padrão para telas maiores
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.875rem', // Ajusta a fonte para dispositivos móveis
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '0.75rem', // Ajusta ainda mais para telas menores
+		},
+	}));
+
 	return (
 		<>
 			<>
@@ -100,335 +112,338 @@ const Orcamento = () => {
 				</section>
 				;
 			</>
+			<Box
+				component="form"
+				sx={{
+					display: 'flex',
+					flexDirection: { xs: 'column', md: 'row' }, // Alinha vertical em telas pequenas e horizontal em maiores
+					gap: 2,
+					width: { xs: '100%', sm: '80%', md: '60%', lg: '40%' },
+					maxWidth: '400px', // Limita a largura máxima do formulário
+					mx: 'auto',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<section className="max-w-7xl mx-auto pb-44 pt-20">
+					<div className="bg-white max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[498px_770px] gap-0 relative items-center top-[-250px] h-auto w-full">
+						<img
+							src={background}
+							alt="imagem de um prédio"
+							className="hidden md:block md:w-full md:h-full object-cover m-0 p-0"
+						/>
 
-			<section className="max-w-7xl mx-auto pb-44 pt-20">
-				<div className="bg-white max-w-7xl mx-auto grid grid-cols-[498px_770px] gap-0 relative items-center top-[-250px] h-auto w-full">
-					<img
-						src={background}
-						alt="imagem de um prédio"
-						className="hidden md:block md:w-full md:h-full object-cover m-0 p-0"
-					/>
-
-					<form
-						onSubmit={handleSubmit(onSubmit)}
-						className="p-6 w-full h-full"
-					>
-						<p className="font-extrabold border-l-8 border-ciano pl-2 mb-8 mt-6 text-xl">
-							PREENCHA COM SEUS DADOS
-						</p>
-						<Controller
-							name="nomeEmpresa"
-							control={control}
-							rules={{
-								required: 'Nome da empresa é obrigatório',
-							}}
-							render={({ field }) => (
-								<TextField
-									{...field}
-									label="Nome da empresa*"
-									variant="outlined"
-									fullWidth
-									margin="normal"
-									error={!!errors.nomeEmpresa}
-									helperText={errors.nomeEmpresa?.message}
-								/>
-							)}
-						/>
-						<Controller
-							name="nomeResponsavel"
-							control={control}
-							rules={{
-								required: 'Nome do responsável é obrigatório',
-							}}
-							render={({ field }) => (
-								<TextField
-									{...field}
-									label="Nome do responsável*"
-									variant="outlined"
-									fullWidth
-									margin="normal"
-									error={!!errors.nomeResponsavel}
-									helperText={errors.nomeResponsavel?.message}
-								/>
-							)}
-						/>
-						<Controller
-							name="emailContato"
-							control={control}
-							rules={{
-								required: 'E-mail é obrigatório',
-								pattern: {
-									value: /^[^\s@]+@[^\s@]+\.(com|com\.br)$/,
-									message:
-										'O e-mail deve ter a extensão .com ou .com.br',
-								},
-							}}
-							render={({ field }) => (
-								<TextField
-									{...field}
-									label="E-mail de contato*"
-									variant="outlined"
-									fullWidth
-									margin="normal"
-									error={!!errors.emailContato}
-									helperText={errors.emailContato?.message}
-								/>
-							)}
-						/>
-						<Controller
-							name="telefone"
-							control={control}
-							rules={{ required: 'Telefone é obrigatório' }}
-							render={({ field }) => (
-								<InputMask
-									{...field}
-									mask="(99) 99999-9999" // Máscara de telefone (ajuste conforme necessário)
-									onChange={(e) => field.onChange(e)} // Atualiza o valor do campo
-								>
-									{() => (
-										<TextField
-											label="Telefone (com WhatsApp)*"
-											variant="outlined"
-											fullWidth
-											margin="normal"
-											error={!!errors.telefone}
-											helperText={
-												errors.telefone?.message
-											}
-										/>
-									)}
-								</InputMask>
-							)}
-						/>
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.faturamentoAnual}
+						<form
+							onSubmit={handleSubmit(onSubmit)}
+							className="p-6 w-full h-full"
 						>
-							<InputLabel>Faturamento anual estimado*</InputLabel>
+							<p className="font-extrabold border-l-8 border-ciano pl-2 mb-8 mt-6 text-xl">
+								PREENCHA COM SEUS DADOS
+							</p>
 							<Controller
-								name="faturamentoAnual"
+								name="nomeEmpresa"
 								control={control}
 								rules={{
-									required: 'Selecione o faturamento anual',
+									required: 'Nome da empresa é obrigatório',
 								}}
 								render={({ field }) => (
-									<Select
+									<TextField
 										{...field}
-										label="Faturamento anual estimado*"
-									>
-										<MenuItem value="Menos de R$ 1 milhão">
-											Menos de R$ 1 milhão
-										</MenuItem>
-										<MenuItem value="De R$ 1 milhão a R$ 3 milhões">
-											De R$ 1 milhão a R$ 3 milhões
-										</MenuItem>
-										<MenuItem value="De R$ 3 milhões a R$ 10 milhões">
-											De R$ 3 milhões a R$ 10 milhões
-										</MenuItem>
-										<MenuItem value="De R$ 10 milhões a R$ 50 milhões">
-											De R$ 10 milhões a R$ 50 milhões
-										</MenuItem>
-										<MenuItem value="Acima de R$ 50 milhões">
-											Acima de R$ 50 milhões
-										</MenuItem>
-									</Select>
+										label="Nome da empresa*"
+										variant="outlined"
+										fullWidth
+										InputProps={{
+											style: { fontSize: '14px' },
+										}}
+										InputLabelProps={{
+											style: { fontSize: '14px' },
+										}}
+										margin="normal"
+										error={!!errors.nomeEmpresa}
+										helperText={errors.nomeEmpresa?.message}
+									/>
 								)}
 							/>
-							{errors.faturamentoAnual && (
-								<FormHelperText>
-									{errors.faturamentoAnual.message}
-								</FormHelperText>
-							)}
-						</FormControl>
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.colaboradores}
-						>
-							<InputLabel>
-								Quantos colaboradores trabalham no escritório?*
-							</InputLabel>
 							<Controller
-								name="colaboradores"
+								name="nomeResponsavel"
 								control={control}
 								rules={{
 									required:
-										'Selecione a quantidade de colaboradores',
+										'Nome do responsável é obrigatório',
 								}}
 								render={({ field }) => (
-									<Select
+									<TextField
 										{...field}
-										label="Quantos colaboradores trabalham no escritório?*"
-									>
-										<MenuItem value="1-2">1-2</MenuItem>
-										<MenuItem value="3-5">3-5</MenuItem>
-										<MenuItem value="6-10">6-10</MenuItem>
-										<MenuItem value="11-20">11-20</MenuItem>
-										<MenuItem value="Mais de 20">
-											Mais de 20
-										</MenuItem>
-									</Select>
+										label="Nome do responsável*"
+										variant="outlined"
+										fullWidth
+										InputProps={{
+											style: { fontSize: '14px' },
+										}}
+										InputLabelProps={{
+											style: { fontSize: '14px' },
+										}}
+										margin="normal"
+										error={!!errors.nomeResponsavel}
+										helperText={
+											errors.nomeResponsavel?.message
+										}
+									/>
 								)}
 							/>
-							{errors.colaboradores && (
-								<FormHelperText>
-									{errors.colaboradores.message}
-								</FormHelperText>
-							)}
-						</FormControl>
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.modulosERP}
-						>
-							<FormLabel>
-								Quais módulos do ERP você está interessado?*
-							</FormLabel>
 							<Controller
-								name="modulosERP"
+								name="emailContato"
 								control={control}
 								rules={{
-									validate: {
-										atLeastOne: (value) =>
-											value.length > 0 ||
-											'Selecione pelo menos um item',
+									required: 'E-mail é obrigatório',
+									pattern: {
+										value: /^[^\s@]+@[^\s@]+\.(com|com\.br)$/,
+										message:
+											'O e-mail deve ter a extensão .com ou .com.br',
 									},
 								}}
 								render={({ field }) => (
-									<FormGroup>
-										<Box
-											sx={{
-												display: 'grid',
-												gridTemplateColumns:
-													'repeat(3, 1fr)', // 3 colunas
-												gap: 2, // espaçamento entre os itens
-											}}
+									<TextField
+										{...field}
+										label="E-mail de contato*"
+										variant="outlined"
+										fullWidth
+										InputProps={{
+											style: { fontSize: '14px' },
+										}}
+										InputLabelProps={{
+											style: { fontSize: '14px' },
+										}}
+										margin="normal"
+										error={!!errors.emailContato}
+										helperText={
+											errors.emailContato?.message
+										}
+									/>
+								)}
+							/>
+							<Controller
+								name="telefone"
+								control={control}
+								rules={{ required: 'Telefone é obrigatório' }}
+								render={({ field }) => (
+									<InputMask
+										{...field}
+										mask="(99) 99999-9999" // Máscara de telefone (ajuste conforme necessário)
+										onChange={(e) => field.onChange(e)} // Atualiza o valor do campo
+									>
+										{() => (
+											<TextField
+												label="Telefone (com WhatsApp)*"
+												variant="outlined"
+												fullWidth
+												InputProps={{
+													style: { fontSize: '14px' },
+												}}
+												InputLabelProps={{
+													style: { fontSize: '14px' },
+												}}
+												margin="normal"
+												error={!!errors.telefone}
+												helperText={
+													errors.telefone?.message
+												}
+											/>
+										)}
+									</InputMask>
+								)}
+							/>
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.faturamentoAnual}
+							>
+								<ResponsiveInputLabel>
+									Faturamento anual estimado*
+								</ResponsiveInputLabel>
+								<Controller
+									name="faturamentoAnual"
+									control={control}
+									rules={{
+										required:
+											'Selecione o faturamento anual',
+									}}
+									render={({ field }) => (
+										<Select
+											{...field}
+											label="Faturamento anual estimado*"
 										>
-											{[
-												'Estoque',
-												'Compras',
-												'NF Entrada',
-												'Produção',
-												'Vendas',
-												'NF Saída',
-												'NF Eletrônica',
-												'Transporte (CT-e ou MDF-e)',
-												'Contrato Locação',
-												'Tesouraria',
-												'Fiscal',
-												'Patrimônio',
-												'Análise de Dados (relatórios e BI)',
-												'Controle de Embalagens Retornáveis',
-												'Agendador de Tarefas',
-												'Aplicativo de Vendas Android',
-												'Aplicativo de Coleta de Assinatura Android',
-											].map((module) => (
-												<FormControlLabel
-													key={module}
-													control={
-														<Checkbox
-															value={module}
-															checked={field.value.includes(
-																module
-															)}
-															onChange={(e) => {
-																const value =
-																	e.target
-																		.value;
-																if (
-																	field.value.includes(
-																		value
-																	)
-																) {
-																	field.onChange(
-																		field.value.filter(
-																			(
-																				item: string
-																			) =>
-																				item !==
-																				value
+											<MenuItem value="Menos de R$ 1 milhão">
+												Menos de R$ 1 milhão
+											</MenuItem>
+											<MenuItem value="De R$ 1 milhão a R$ 3 milhões">
+												De R$ 1 milhão a R$ 3 milhões
+											</MenuItem>
+											<MenuItem value="De R$ 3 milhões a R$ 10 milhões">
+												De R$ 3 milhões a R$ 10 milhões
+											</MenuItem>
+											<MenuItem value="De R$ 10 milhões a R$ 50 milhões">
+												De R$ 10 milhões a R$ 50 milhões
+											</MenuItem>
+											<MenuItem value="Acima de R$ 50 milhões">
+												Acima de R$ 50 milhões
+											</MenuItem>
+										</Select>
+									)}
+								/>
+								{errors.faturamentoAnual && (
+									<FormHelperText>
+										{errors.faturamentoAnual.message}
+									</FormHelperText>
+								)}
+							</FormControl>
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.colaboradores}
+							>
+								<ResponsiveInputLabel>
+									Quantos colaboradores trabalham no
+									escritório?*
+								</ResponsiveInputLabel>
+								<Controller
+									name="colaboradores"
+									control={control}
+									rules={{
+										required:
+											'Selecione a quantidade de colaboradores',
+									}}
+									render={({ field }) => (
+										<Select
+											{...field}
+											label="Quantos colaboradores trabalham no escritório?*"
+										>
+											<MenuItem value="1-2">1-2</MenuItem>
+											<MenuItem value="3-5">3-5</MenuItem>
+											<MenuItem value="6-10">
+												6-10
+											</MenuItem>
+											<MenuItem value="11-20">
+												11-20
+											</MenuItem>
+											<MenuItem value="Mais de 20">
+												Mais de 20
+											</MenuItem>
+										</Select>
+									)}
+								/>
+								{errors.colaboradores && (
+									<FormHelperText>
+										{errors.colaboradores.message}
+									</FormHelperText>
+								)}
+							</FormControl>
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.modulosERP}
+							>
+								<FormLabel>
+									Quais módulos do ERP você está interessado?*
+								</FormLabel>
+								<Controller
+									name="modulosERP"
+									control={control}
+									rules={{
+										validate: {
+											atLeastOne: (value) =>
+												value.length > 0 ||
+												'Selecione pelo menos um item',
+										},
+									}}
+									render={({ field }) => (
+										<FormGroup>
+											<Box
+												sx={{
+													display: 'grid',
+													gridTemplateColumns: {
+														xs: 'repeat(2, 1fr)', // 2 colunas em dispositivos pequenos (telas xs)
+														md: 'repeat(3, 1fr)', // 3 colunas em dispositivos médios em diante
+													},
+													gap: 2, // Espaçamento entre os itens
+												}}
+											>
+												{[
+													'Estoque',
+													'Compras',
+													'NF Entrada',
+													'Produção',
+													'Vendas',
+													'NF Saída',
+													'NF Eletrônica',
+													'Transporte (CT-e ou MDF-e)',
+													'Contrato Locação',
+													'Tesouraria',
+													'Fiscal',
+													'Patrimônio',
+													'Análise de Dados (relatórios e BI)',
+													'Controle de Embalagens Retornáveis',
+													'Agendador de Tarefas',
+													'Aplicativo de Vendas Android',
+													'Aplicativo de Coleta de Assinatura Android',
+												].map((module) => (
+													<FormControlLabel
+														key={module}
+														control={
+															<Checkbox
+																value={module}
+																checked={field.value.includes(
+																	module
+																)}
+																onChange={(
+																	e
+																) => {
+																	const value =
+																		e.target
+																			.value;
+																	if (
+																		field.value.includes(
+																			value
 																		)
-																	);
-																} else {
-																	field.onChange(
-																		[
-																			...field.value,
-																			value,
-																		]
-																	);
-																}
-															}}
-														/>
-													}
-													label={module}
-												/>
-											))}
-											{/* Adicionando o módulo Financeiro com submódulos */}
-											<SimpleTreeView>
-												<TreeItem
-													itemId="financeiro"
-													label="Financeiro"
-												>
-													<TreeItem
-														itemId="contas"
-														label={
-															<FormControlLabel
-																control={
-																	<Checkbox
-																		value="Contas a Pagar"
-																		checked={field.value.includes(
-																			'Contas a Pagar'
-																		)}
-																		onChange={(
-																			e
-																		) => {
-																			const value =
-																				e
-																					.target
-																					.value;
-																			if (
-																				field.value.includes(
+																	) {
+																		field.onChange(
+																			field.value.filter(
+																				(
+																					item: string
+																				) =>
+																					item !==
 																					value
-																				)
-																			) {
-																				field.onChange(
-																					field.value.filter(
-																						(
-																							item: string
-																						) =>
-																							item !==
-																							value
-																					)
-																				);
-																			} else {
-																				field.onChange(
-																					[
-																						...field.value,
-																						value,
-																					]
-																				);
-																			}
-																		}}
-																	/>
-																}
-																label="Contas a Pagar"
+																			)
+																		);
+																	} else {
+																		field.onChange(
+																			[
+																				...field.value,
+																				value,
+																			]
+																		);
+																	}
+																}}
 															/>
 														}
+														label={module}
 													/>
+												))}
+												{/* Adicionando o módulo Financeiro com submódulos */}
+												<SimpleTreeView>
 													<TreeItem
-														itemId="contasReceber"
-														label="Contas a Receber"
+														itemId="financeiro"
+														label="Financeiro"
 													>
 														<TreeItem
-															itemId="boleto"
+															itemId="contas"
 															label={
 																<FormControlLabel
 																	control={
 																		<Checkbox
-																			value="Emissão de Boleto"
+																			value="Contas a Pagar"
 																			checked={field.value.includes(
-																				'Emissão de Boleto'
+																				'Contas a Pagar'
 																			)}
 																			onChange={(
 																				e
@@ -462,437 +477,514 @@ const Orcamento = () => {
 																			}}
 																		/>
 																	}
-																	label="Emissão de Boleto"
+																	label="Contas a Pagar"
 																/>
 															}
 														/>
 														<TreeItem
-															itemId="reguaCobranca"
-															label={
-																<FormControlLabel
-																	control={
-																		<Checkbox
-																			value="Régua de Cobrança"
-																			checked={field.value.includes(
-																				'Régua de Cobrança'
-																			)}
-																			onChange={(
-																				e
-																			) => {
-																				const value =
+															itemId="contasReceber"
+															label="Contas a Receber"
+														>
+															<TreeItem
+																itemId="boleto"
+																label={
+																	<FormControlLabel
+																		control={
+																			<Checkbox
+																				value="Emissão de Boleto"
+																				checked={field.value.includes(
+																					'Emissão de Boleto'
+																				)}
+																				onChange={(
 																					e
-																						.target
-																						.value;
-																				if (
-																					field.value.includes(
-																						value
-																					)
-																				) {
-																					field.onChange(
-																						field.value.filter(
-																							(
-																								item: string
-																							) =>
-																								item !==
-																								value
+																				) => {
+																					const value =
+																						e
+																							.target
+																							.value;
+																					if (
+																						field.value.includes(
+																							value
 																						)
-																					);
-																				} else {
-																					field.onChange(
-																						[
-																							...field.value,
-																							value,
-																						]
-																					);
-																				}
-																			}}
-																		/>
-																	}
-																	label="Régua de Cobrança"
-																/>
-															}
-														/>
+																					) {
+																						field.onChange(
+																							field.value.filter(
+																								(
+																									item: string
+																								) =>
+																									item !==
+																									value
+																							)
+																						);
+																					} else {
+																						field.onChange(
+																							[
+																								...field.value,
+																								value,
+																							]
+																						);
+																					}
+																				}}
+																			/>
+																		}
+																		label="Emissão de Boleto"
+																	/>
+																}
+															/>
+															<TreeItem
+																itemId="reguaCobranca"
+																label={
+																	<FormControlLabel
+																		control={
+																			<Checkbox
+																				value="Régua de Cobrança"
+																				checked={field.value.includes(
+																					'Régua de Cobrança'
+																				)}
+																				onChange={(
+																					e
+																				) => {
+																					const value =
+																						e
+																							.target
+																							.value;
+																					if (
+																						field.value.includes(
+																							value
+																						)
+																					) {
+																						field.onChange(
+																							field.value.filter(
+																								(
+																									item: string
+																								) =>
+																									item !==
+																									value
+																							)
+																						);
+																					} else {
+																						field.onChange(
+																							[
+																								...field.value,
+																								value,
+																							]
+																						);
+																					}
+																				}}
+																			/>
+																		}
+																		label="Régua de Cobrança"
+																	/>
+																}
+															/>
+														</TreeItem>
 													</TreeItem>
-												</TreeItem>
-											</SimpleTreeView>
-										</Box>
-										{errors.modulosERP && (
-											<FormHelperText>
-												{errors.modulosERP.message}
-											</FormHelperText>
-										)}
-									</FormGroup>
-								)}
-							/>
-						</FormControl>
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.usuarios}
-						>
-							<InputLabel>
-								Quantos usuários irão utilizar o sistema
-								inicialmente?*
-							</InputLabel>
-							<Controller
-								name="usuarios"
-								control={control}
-								rules={{
-									required:
-										'Selecione a quantidade de usuários',
-								}}
-								render={({ field }) => (
-									<Select
-										{...field}
-										label="Quantos usuários irão utilizar o sistema inicialmente?"
-									>
-										<MenuItem value="1-2">1-5</MenuItem>
-										<MenuItem value="3-5">6-10</MenuItem>
-										<MenuItem value="6-10">11-15</MenuItem>
-										<MenuItem value="Mais de 20">
-											Mais de 15
-										</MenuItem>
-									</Select>
-								)}
-							/>
-							{errors.usuarios && (
-								<FormHelperText>
-									{errors.usuarios.message}
-								</FormHelperText>
-							)}
-						</FormControl>
-						<Controller
-							name="sistemaAtual"
-							control={control}
-							render={({ field }) => (
-								<TextField
-									{...field}
-									label="Qual o sistema de gestão atual da sua empresa?"
-									variant="outlined"
-									fullWidth
-									margin="normal"
+												</SimpleTreeView>
+											</Box>
+											{errors.modulosERP && (
+												<FormHelperText>
+													{errors.modulosERP.message}
+												</FormHelperText>
+											)}
+										</FormGroup>
+									)}
 								/>
-							)}
-						/>
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.prazoImplementacao}
-						>
-							<InputLabel>
-								Prazo estimado para implementação do ERP*
-							</InputLabel>
-							<Controller
-								name="prazoImplementacao"
-								control={control}
-								rules={{ required: 'Selecione um prazo' }}
-								render={({ field }) => (
-									<Select
-										{...field}
-										label="Prazo estimado para implementação do ERP*"
-									>
-										<MenuItem value="Imediato">
-											Imediato
-										</MenuItem>
-										<MenuItem value="1 a 3 meses">
-											1 a 3 meses
-										</MenuItem>
-										<MenuItem value="3 a 6 meses">
-											3 a 6 meses
-										</MenuItem>
-										<MenuItem value="Mais de 6 meses">
-											Mais de 6 meses
-										</MenuItem>
-									</Select>
+							</FormControl>
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.usuarios}
+							>
+								<ResponsiveInputLabel>
+									Quantos usuários irão utilizar o sistema?*
+								</ResponsiveInputLabel>
+								<Controller
+									name="usuarios"
+									control={control}
+									rules={{
+										required:
+											'Selecione a quantidade de usuários',
+									}}
+									render={({ field }) => (
+										<Select
+											{...field}
+											label="Quantos usuários irão utilizar o sistema?*"
+										>
+											<MenuItem value="1-2">1-5</MenuItem>
+											<MenuItem value="3-5">
+												6-10
+											</MenuItem>
+											<MenuItem value="6-10">
+												11-15
+											</MenuItem>
+											<MenuItem value="Mais de 20">
+												Mais de 15
+											</MenuItem>
+										</Select>
+									)}
+								/>
+								{errors.usuarios && (
+									<FormHelperText>
+										{errors.usuarios.message}
+									</FormHelperText>
 								)}
-							/>
-							{errors.prazoImplementacao && (
-								<FormHelperText>
-									{errors.prazoImplementacao.message}
-								</FormHelperText>
-							)}
-						</FormControl>
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.usouERPAntes}
-						>
-							<FormLabel>
-								Já utilizou algum sistema ERP antes?*
-							</FormLabel>
+							</FormControl>
 							<Controller
-								name="usouERPAntes"
-								control={control}
-								rules={{ required: 'Selecione uma opção' }}
-								render={({ field }) => (
-									<RadioGroup {...field} row>
-										<FormControlLabel
-											value="Sim"
-											control={<Radio />}
-											label="Sim"
-										/>
-										<FormControlLabel
-											value="Não"
-											control={<Radio />}
-											label="Não"
-										/>
-									</RadioGroup>
-								)}
-							/>
-							{errors.usouERPAntes && (
-								<FormHelperText>
-									{errors.usouERPAntes.message}
-								</FormHelperText>
-							)}
-						</FormControl>
-						{watch('usouERPAntes') === 'Sim' && (
-							<Controller
-								name="nomeSistemaERP"
+								name="sistemaAtual"
 								control={control}
 								render={({ field }) => (
 									<TextField
 										{...field}
-										label="Qual ERP utilizou?"
+										label="Qual o sistema de gestão atual da sua empresa?"
 										variant="outlined"
 										fullWidth
+										InputProps={{
+											style: { fontSize: '14px' },
+										}}
+										InputLabelProps={{
+											style: { fontSize: '14px' },
+										}}
 										margin="normal"
 									/>
 								)}
 							/>
-						)}
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.recursosImportantes}
-						>
-							<FormLabel>
-								Quais recursos são mais importantes para você?*
-							</FormLabel>
-							<Controller
-								name="recursosImportantes"
-								control={control}
-								rules={{
-									validate: {
-										atLeastOne: (value) =>
-											value.length > 0 ||
-											'Selecione pelo menos um item',
-									},
-								}}
-								render={({ field }) => (
-									<FormGroup>
-										<Box
-											sx={{
-												display: 'grid',
-												gridTemplateColumns:
-													'repeat(2, 1fr)', // 3 colunas
-												gap: 2, // espaçamento entre os itens
-											}}
-										>
-											{[
-												'Automação de cobranças',
-												'Controle de produção',
-												'Emissão de notas fiscais',
-												'Gestão de estoque',
-												'Integração com e-commerce',
-												'Outros',
-											].map((resource) => (
-												<FormControlLabel
-													key={resource}
-													control={
-														<Checkbox
-															value={resource}
-															checked={field.value.includes(
-																resource
-															)}
-															onChange={(e) => {
-																const value =
-																	e.target
-																		.value;
-																if (
-																	value ===
-																	'Outros'
-																) {
-																	setShowOtherField(
-																		e.target
-																			.checked
-																	);
-																}
-																if (
-																	field.value.includes(
-																		value
-																	)
-																) {
-																	field.onChange(
-																		field.value.filter(
-																			(
-																				item
-																			) =>
-																				item !==
-																				value
-																		)
-																	);
-																} else {
-																	field.onChange(
-																		[
-																			...field.value,
-																			value,
-																		]
-																	);
-																}
-															}}
-														/>
-													}
-													label={resource}
-												/>
-											))}
-										</Box>
-									</FormGroup>
-								)}
-							/>
-							{errors.recursosImportantes && (
-								<FormHelperText>
-									{errors.recursosImportantes.message}
-								</FormHelperText>
-							)}
-						</FormControl>
-
-						{showOtherField && (
-							<FormControl fullWidth margin="normal">
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.prazoImplementacao}
+							>
+								<ResponsiveInputLabel>
+									Prazo estimado para implementação do ERP*
+								</ResponsiveInputLabel>
 								<Controller
-									name="outrosRecursos"
+									name="prazoImplementacao"
+									control={control}
+									rules={{ required: 'Selecione um prazo' }}
+									render={({ field }) => (
+										<Select
+											{...field}
+											label="Prazo estimado para implementação do ERP*"
+										>
+											<MenuItem value="Imediato">
+												Imediato
+											</MenuItem>
+											<MenuItem value="1 a 3 meses">
+												1 a 3 meses
+											</MenuItem>
+											<MenuItem value="3 a 6 meses">
+												3 a 6 meses
+											</MenuItem>
+											<MenuItem value="Mais de 6 meses">
+												Mais de 6 meses
+											</MenuItem>
+										</Select>
+									)}
+								/>
+								{errors.prazoImplementacao && (
+									<FormHelperText>
+										{errors.prazoImplementacao.message}
+									</FormHelperText>
+								)}
+							</FormControl>
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.usouERPAntes}
+							>
+								<FormLabel>
+									Já utilizou algum sistema ERP antes?*
+								</FormLabel>
+								<Controller
+									name="usouERPAntes"
+									control={control}
+									rules={{ required: 'Selecione uma opção' }}
+									render={({ field }) => (
+										<RadioGroup {...field} row>
+											<FormControlLabel
+												value="Sim"
+												control={<Radio />}
+												label="Sim"
+											/>
+											<FormControlLabel
+												value="Não"
+												control={<Radio />}
+												label="Não"
+											/>
+										</RadioGroup>
+									)}
+								/>
+								{errors.usouERPAntes && (
+									<FormHelperText>
+										{errors.usouERPAntes.message}
+									</FormHelperText>
+								)}
+							</FormControl>
+							{watch('usouERPAntes') === 'Sim' && (
+								<Controller
+									name="nomeSistemaERP"
 									control={control}
 									render={({ field }) => (
 										<TextField
 											{...field}
-											label="Quais?"
+											label="Qual ERP utilizou?"
 											variant="outlined"
 											fullWidth
+											InputProps={{
+												style: { fontSize: '14px' },
+											}}
+											InputLabelProps={{
+												style: { fontSize: '14px' },
+											}}
 											margin="normal"
 										/>
 									)}
 								/>
+							)}
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.recursosImportantes}
+							>
+								<FormLabel>
+									Quais recursos são mais importantes para
+									você?*
+								</FormLabel>
+								<Controller
+									name="recursosImportantes"
+									control={control}
+									rules={{
+										validate: {
+											atLeastOne: (value) =>
+												value.length > 0 ||
+												'Selecione pelo menos um item',
+										},
+									}}
+									render={({ field }) => (
+										<FormGroup>
+											<Box
+												sx={{
+													display: 'grid',
+													gridTemplateColumns:
+														'repeat(2, 1fr)', // 3 colunas
+													gap: 2, // espaçamento entre os itens
+												}}
+											>
+												{[
+													'Automação de cobranças',
+													'Controle de produção',
+													'Emissão de notas fiscais',
+													'Gestão de estoque',
+													'Integração com e-commerce',
+													'Outros',
+												].map((resource) => (
+													<FormControlLabel
+														key={resource}
+														control={
+															<Checkbox
+																value={resource}
+																checked={field.value.includes(
+																	resource
+																)}
+																onChange={(
+																	e
+																) => {
+																	const value =
+																		e.target
+																			.value;
+																	if (
+																		value ===
+																		'Outros'
+																	) {
+																		setShowOtherField(
+																			e
+																				.target
+																				.checked
+																		);
+																	}
+																	if (
+																		field.value.includes(
+																			value
+																		)
+																	) {
+																		field.onChange(
+																			field.value.filter(
+																				(
+																					item
+																				) =>
+																					item !==
+																					value
+																			)
+																		);
+																	} else {
+																		field.onChange(
+																			[
+																				...field.value,
+																				value,
+																			]
+																		);
+																	}
+																}}
+															/>
+														}
+														label={resource}
+													/>
+												))}
+											</Box>
+										</FormGroup>
+									)}
+								/>
+								{errors.recursosImportantes && (
+									<FormHelperText>
+										{errors.recursosImportantes.message}
+									</FormHelperText>
+								)}
 							</FormControl>
-						)}
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.OrcamentoParcelas}
-						>
-							<InputLabel>
-								Qual é o seu orçamento aproximado para um
-								sistema ERP (mensalidade)?*
-							</InputLabel>
-							<Controller
-								name="OrcamentoParcelas"
-								control={control}
-								rules={{
-									required:
-										'Selecione um orçamento aproximado',
-								}}
-								render={({ field }) => (
-									<Select
-										{...field}
-										label="Qual é o seu orçamento aproximado para um sistema ERP (mensalidade)?*"
-									>
-										<MenuItem value="500">
-											Até R$ 500,00
-										</MenuItem>
-										<MenuItem value="500 a 1000">
-											De R$ 500,00 a R$ 1.000,00
-										</MenuItem>
-										<MenuItem value="1000 a 1500">
-											De R$ 1.000,00 a R$ 1.500,00
-										</MenuItem>
-										<MenuItem value="1500 a 2000">
-											De R$ 1.500,00 a R$ 2.000,00
-										</MenuItem>
-										<MenuItem value="2000 a 2500">
-											De R$ 2.000,00 a R$ 2.500,00
-										</MenuItem>
-										<MenuItem value="2500 a 3000">
-											De R$ 2.500,00 a R$ 3.000,00
-										</MenuItem>
-										<MenuItem value="3000 a 3500">
-											De R$ 3.000,00 a R$ 3.500,00
-										</MenuItem>
-										<MenuItem value="3500 a 4000">
-											De R$ 3.500,00 a R$ 4.000,00
-										</MenuItem>
-										<MenuItem value="4000 a 4500">
-											De R$ 4.000,00 a R$ 4.500,00
-										</MenuItem>
-										<MenuItem value="4500 a 5000">
-											De R$ 4.500,00 a R$ 5.000,00
-										</MenuItem>
-										<MenuItem value="Acima de 5000">
-											Acima de R$ 5.000,00
-										</MenuItem>
-									</Select>
-								)}
-							/>
-							{errors.OrcamentoParcelas && (
-								<FormHelperText>
-									{errors.OrcamentoParcelas.message}
-								</FormHelperText>
+
+							{showOtherField && (
+								<FormControl fullWidth margin="normal">
+									<Controller
+										name="outrosRecursos"
+										control={control}
+										render={({ field }) => (
+											<TextField
+												{...field}
+												label="Quais?"
+												variant="outlined"
+												fullWidth
+												InputProps={{
+													style: { fontSize: '14px' },
+												}}
+												InputLabelProps={{
+													style: { fontSize: '14px' },
+												}}
+												margin="normal"
+											/>
+										)}
+									/>
+								</FormControl>
 							)}
-						</FormControl>
-						<FormControl
-							fullWidth
-							margin="normal"
-							error={!!errors.prazoImplementacao}
-						>
-							<InputLabel>
-								Gostaria de agendar uma demonstração do
-								sistema?*
-							</InputLabel>
-							<Controller
-								name="prazoImplementacao"
-								control={control}
-								rules={{
-									required:
-										'Selecione se gostaria ou não de agendar uma demonstração',
-								}}
-								render={({ field }) => (
-									<Select
-										{...field}
-										label="Gostaria de agendar uma demonstração do sistema?"
-									>
-										<MenuItem value="Sim">Sim</MenuItem>
-										<MenuItem value="Não">Não</MenuItem>
-									</Select>
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.OrcamentoParcelas}
+							>
+								<ResponsiveInputLabel>
+									Qual é o seu orçamento aproximado
+									(mensalidade)?*
+								</ResponsiveInputLabel>
+								<Controller
+									name="OrcamentoParcelas"
+									control={control}
+									rules={{
+										required:
+											'Selecione um orçamento aproximado',
+									}}
+									render={({ field }) => (
+										<Select
+											{...field}
+											label="Qual é o seu orçamento aproximado
+									(mensalidade)?*"
+										>
+											<MenuItem value="500">
+												Até R$ 500,00
+											</MenuItem>
+											<MenuItem value="500 a 1000">
+												De R$ 500,00 a R$ 1.000,00
+											</MenuItem>
+											<MenuItem value="1000 a 1500">
+												De R$ 1.000,00 a R$ 1.500,00
+											</MenuItem>
+											<MenuItem value="1500 a 2000">
+												De R$ 1.500,00 a R$ 2.000,00
+											</MenuItem>
+											<MenuItem value="2000 a 2500">
+												De R$ 2.000,00 a R$ 2.500,00
+											</MenuItem>
+											<MenuItem value="2500 a 3000">
+												De R$ 2.500,00 a R$ 3.000,00
+											</MenuItem>
+											<MenuItem value="3000 a 3500">
+												De R$ 3.000,00 a R$ 3.500,00
+											</MenuItem>
+											<MenuItem value="3500 a 4000">
+												De R$ 3.500,00 a R$ 4.000,00
+											</MenuItem>
+											<MenuItem value="4000 a 4500">
+												De R$ 4.000,00 a R$ 4.500,00
+											</MenuItem>
+											<MenuItem value="4500 a 5000">
+												De R$ 4.500,00 a R$ 5.000,00
+											</MenuItem>
+											<MenuItem value="Acima de 5000">
+												Acima de R$ 5.000,00
+											</MenuItem>
+										</Select>
+									)}
+								/>
+								{errors.OrcamentoParcelas && (
+									<FormHelperText>
+										{errors.OrcamentoParcelas.message}
+									</FormHelperText>
 								)}
-							/>
-							{errors.prazoImplementacao && (
-								<FormHelperText>
-									{errors.prazoImplementacao.message}
-								</FormHelperText>
-							)}
-						</FormControl>
-						<Button 
-							sx={{
-								backgroundColor: '#2e5077',
-								marginTop: '1rem',
-								width: '40%',
-								height: '3.5rem',
-								fontWeight: 'bold',
-								fontSize: '1.2rem',
-								transition: 'all 0.3s ease', 
-								'&:hover': {
-									backgroundColor: '#21B2D8', 
-									transform: 'scale(1.05)', 
-								},
-							}}
-							type="submit"
-							variant="contained"
-				
-							
-						
-						>
-							ENVIAR ORÇAMENTO
-						</Button>
-					</form>
-				</div>
-			</section>
+							</FormControl>
+							<FormControl
+								fullWidth
+								margin="normal"
+								error={!!errors.prazoImplementacao}
+							>
+								<ResponsiveInputLabel>
+									Gostaria de agendar uma demonstração?*
+								</ResponsiveInputLabel>
+								<Controller
+									name="prazoImplementacao"
+									control={control}
+									rules={{
+										required:
+											'Selecione se gostaria ou não de agendar uma demonstração',
+									}}
+									render={({ field }) => (
+										<Select
+											{...field}
+											label="Gostaria de agendar uma demonstração?*"
+										>
+											<MenuItem value="Sim">Sim</MenuItem>
+											<MenuItem value="Não">Não</MenuItem>
+										</Select>
+									)}
+								/>
+								{errors.prazoImplementacao && (
+									<FormHelperText>
+										{errors.prazoImplementacao.message}
+									</FormHelperText>
+								)}
+							</FormControl>
+							<Button
+								sx={{
+									backgroundColor: '#2e5077',
+									marginTop: '1rem',
+									width: '40%',
+									height: '3.5rem',
+									fontSize: { xs: '12px', sm: '14px' }, // Ajusta o tamanho da fonte do botão em diferentes tamanhos de tela
+									padding: {
+										xs: '8px 16px',
+										sm: '10px 24px',
+									},
+									fontWeight: 'bold',
+									transition: 'all 0.3s ease',
+									'&:hover': {
+										backgroundColor: '#21B2D8',
+										transform: 'scale(1.05)',
+									},
+								}}
+								type="submit"
+								variant="contained"
+							>
+								ENVIAR ORÇAMENTO
+							</Button>
+						</form>
+					</div>
+				</section>
+			</Box>
 			<footer className="bg-ciano py-2">
 				<div className="max-w-7xl mx-auto flex items-center justify-between text-white">
 					<div className="text-center md:text-left mb-4 md:mb-0">
