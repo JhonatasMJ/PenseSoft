@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import background from '../assets/imgs/bg-1.png';
+import background from '../assets/imgs/bg-1.webp';
 import { useForm, Controller } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { Box, FormHelperText } from '@mui/material';
@@ -24,7 +24,7 @@ import {
 	FormLabel,
 } from '@mui/material';
 
-// Definição da interface para os valores do formulário
+
 interface FormValues {
 	nomeEmpresa: string;
 	nomeResponsavel: string;

@@ -14,9 +14,6 @@ export default {
 				'azul-escuro': '#2e5077',
 				'azul-hover': '#1d3148',
 			},
-			backgroundImage: {
-				teste: "url('./assets/imgs/womanHome.png')",
-			},
 			boxShadow: {
 				'custom-ciano': '0 8px 20px -1px rgba(33, 178, 216, 0.5)',
 			},

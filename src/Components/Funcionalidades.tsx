@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion"; // Importando framer-motion
-import img01 from "../assets/imgs/img01.png";
-import img02 from "../assets/imgs/sales.jpeg";
-import img03 from "../assets/imgs/financeiro.jpg";
-import img04 from "../assets/imgs/Documents.jpg";
-import img05 from "../assets/imgs/process.jpg";
+import img01 from "../assets/imgs/img01.webp";
+import img02 from "../assets/imgs/sales.webp";
+import img03 from "../assets/imgs/financeiro.webp";
+import img04 from "../assets/imgs/Documents.webp";
+import img05 from "../assets/imgs/process.webp";
 
 const listaData = [
   {

@@ -1,7 +1,8 @@
 import { MonitorCog, Phone } from "lucide-react";
-import men from "../assets/imgs/Men.png";
+import men from "../assets/imgs/Men.webp";
 import { motion } from "framer-motion";
-import { Link as ScrollLink } from "react-scroll"; // Import the scroll link
+import { Link as ScrollLink } from "react-scroll";
+import { Link } from "react-router-dom"; 
 
 const About = () => {
   return (
@@ -14,15 +15,12 @@ const About = () => {
         viewport={{ once: true }}
       >
         <span className="text-md font-semibold text-ciano">Conheça</span>
-        <h2 className="text-5xl text-cinza font-bold mt-2">
-          Quem somos
-        </h2>
+        <h2 className="text-5xl text-cinza font-bold mt-2">Quem somos</h2>
         <p className="text-cinza text-lg mt-8">
-        Conheça a  <span className="text-ciano font-extrabold">Pense Soft</span>, onde tecnologia e parceria andam juntas para impulsionar o crescimento do seu negócio. Desde  <span className="text-ciano font-extrabold">2020</span>, oferecemos soluções ERP personalizadas que se adaptam não apenas às necessidades, mas aos sonhos de nossos clientes.
+          Conheça a <span className="text-ciano font-extrabold">Pense Soft</span>, onde tecnologia e parceria andam juntas para impulsionar o crescimento do seu negócio. Desde <span className="text-ciano font-extrabold">2020</span>, oferecemos soluções ERP personalizadas que se adaptam não apenas às necessidades, mas aos sonhos de nossos clientes.
         </p>
         <p className="mt-12 text-lg">
-          <span className="text-ciano font-extrabold">Nossa missão </span> é fornecer sistemas de gestão ERP que se integram perfeitamente às operações dos nossos clientes, proporcionando uma experiência de gestão fluida e eficiente. Fazemos a tecnologia trabalhar a favor do seu negócio, garantindo que você tenha todas as ferramentas necessárias para prosperar em um ambiente competitivo.
-
+          <span className="text-ciano font-extrabold">Nossa missão</span> é fornecer sistemas de gestão ERP que se integram perfeitamente às operações dos nossos clientes, proporcionando uma experiência de gestão fluida e eficiente. Fazemos a tecnologia trabalhar a favor do seu negócio, garantindo que você tenha todas as ferramentas necessárias para prosperar em um ambiente competitivo.
         </p>
         <div className="flex gap-8 md:gap-8">
           <motion.button
@@ -30,29 +28,28 @@ const About = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a className="flex items-center gap-2 " href="/">
+          
+            <Link to="/orcamento" className="flex items-center gap-2">
               CONTATO
-              <motion.div
-                whileHover={{ rotate: 360 }} 
-                transition={{ duration: 0.5 }}
-              >
-                <Phone className="hidden md:block" size={20}/>
+              <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.5 }}>
+                <Phone className="hidden md:block" size={20} />
               </motion.div>
-            </a>
+            </Link>
           </motion.button>
+
           <motion.button
             className="w-max bg-azul text-white font-bold rounded-md text-sm py-4 px-4 md:px-6 md:py-3 mt-14"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <ScrollLink
-              to="funcionalidades" // The section to scroll to
+              to="funcionalidades"
               smooth={true}
               duration={500}
-              offset={-50} // Optional, adjust for headers if necessary
+              offset={-50}
               className="flex items-center gap-2 text-sm cursor-pointer"
             >
-              FUNCIONALIDADES 
+              FUNCIONALIDADES
               <MonitorCog className="hidden md:block" />
             </ScrollLink>
           </motion.button>

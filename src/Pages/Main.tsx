@@ -5,7 +5,7 @@ import About from '../Components/About';
 import Boost from '../Components/Boost';
 import Funcionalidades from '../Components/Funcionalidades';
 import Footer from '../Components/Footer';
-// Importe outras seções que compõem a página principal
+
 
 const Main = () => {
 	return (
