@@ -24,7 +24,6 @@ import {
 	FormLabel,
 } from '@mui/material';
 
-
 interface FormValues {
 	nomeEmpresa: string;
 	nomeResponsavel: string;
@@ -99,7 +98,7 @@ const Orcamento = () => {
 						<h2 className="text-2xl font-bold text-cinza mb-0 mt-2">
 							Faça um
 						</h2>
-						<h1 className="text-4xl text-white font-bold mt-6">
+						<h1 className="text-4xl text-white font-bold mt-16">
 							Orçamento
 						</h1>
 						<p className="text-white w-full text-base md:text-lg mt-6 md:w-[60%]">
@@ -118,26 +117,29 @@ const Orcamento = () => {
 					display: 'flex',
 					flexDirection: { xs: 'column', md: 'row' }, // Alinha vertical em telas pequenas e horizontal em maiores
 					gap: 2,
-					width: { xs: '100%', sm: '80%', md: '60%', lg: '40%' },
-					maxWidth: '400px', // Limita a largura máxima do formulário
+					width: { xs: '100%', sm: '90%', md: '80%', lg: '70%' },
+					maxWidth: '900px', // Limita a largura máxima do formulário
 					mx: 'auto',
 					justifyContent: 'center',
 					alignItems: 'center',
+					px: 2,
+					padding: { xs: 2, md: 4 },
+					boxSizing: 'border-box',
 				}}
 			>
 				<section className="max-w-7xl mx-auto pb-44 pt-20">
-					<div className="bg-white max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[498px_770px] gap-0 relative items-center top-[-250px] h-auto w-full">
+					<div className="bg-white max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[498px_770px] gap-0 relative items-center top-[-250px] h-auto w-full">
 						<img
 							src={background}
 							alt="imagem de um prédio"
-							className="hidden md:block md:w-full md:h-full object-cover m-0 p-0"
+							className="hidden lg:block lg:w-full lg:h-full object-cover m-0 p-0"
 						/>
 
 						<form
 							onSubmit={handleSubmit(onSubmit)}
-							className="p-6 w-full h-full"
+							className="p-6 w-full h-auto max-w-[900px] mx-auto"
 						>
-							<p className="font-extrabold border-l-8 border-ciano pl-2 mb-8 mt-6 text-xl">
+							<p className="font-extrabold border-l-8 border-ciano pl-2 mb-8 mt-6 text-lg md:text-xl lg:text-2xl">
 								PREENCHA COM SEUS DADOS
 							</p>
 							<Controller
@@ -303,8 +305,7 @@ const Orcamento = () => {
 								error={!!errors.colaboradores}
 							>
 								<ResponsiveInputLabel>
-									Quantos colaboradores trabalham no
-									escritório?*
+									Possui quantos colaboradores?*
 								</ResponsiveInputLabel>
 								<Controller
 									name="colaboradores"
@@ -316,7 +317,7 @@ const Orcamento = () => {
 									render={({ field }) => (
 										<Select
 											{...field}
-											label="Quantos colaboradores trabalham no escritório?*"
+											label="Possui quantos colaboradores?*"
 										>
 											<MenuItem value="1-2">1-2</MenuItem>
 											<MenuItem value="3-5">3-5</MenuItem>
@@ -635,7 +636,7 @@ const Orcamento = () => {
 								render={({ field }) => (
 									<TextField
 										{...field}
-										label="Qual o sistema de gestão atual da sua empresa?"
+										label="Qual seu sistema de gestão atual?"
 										variant="outlined"
 										fullWidth
 										InputProps={{
@@ -654,7 +655,7 @@ const Orcamento = () => {
 								error={!!errors.prazoImplementacao}
 							>
 								<ResponsiveInputLabel>
-									Prazo estimado para implementação do ERP*
+									Prazo para implementação do ERP*
 								</ResponsiveInputLabel>
 								<Controller
 									name="prazoImplementacao"
@@ -663,7 +664,7 @@ const Orcamento = () => {
 									render={({ field }) => (
 										<Select
 											{...field}
-											label="Prazo estimado para implementação do ERP*"
+											label="Prazo para implementação do ERP*"
 										>
 											<MenuItem value="Imediato">
 												Imediato
@@ -869,8 +870,7 @@ const Orcamento = () => {
 								error={!!errors.OrcamentoParcelas}
 							>
 								<ResponsiveInputLabel>
-									Qual é o seu orçamento aproximado
-									(mensalidade)?*
+									Qual é o seu orçamento (mensalidade)?*
 								</ResponsiveInputLabel>
 								<Controller
 									name="OrcamentoParcelas"
@@ -882,8 +882,7 @@ const Orcamento = () => {
 									render={({ field }) => (
 										<Select
 											{...field}
-											label="Qual é o seu orçamento aproximado
-									(mensalidade)?*"
+											label="Qual é o seu orçamento (mensalidade)?*"
 										>
 											<MenuItem value="500">
 												Até R$ 500,00

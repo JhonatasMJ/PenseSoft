@@ -21,6 +21,9 @@ export default {
 				'48p': '48%',
 				'49p': '49%',
 			},
+			screens: {
+				notebook: '1280px', // Define a resolução para notebooks com largura de 1280px
+			},
 		},
 	},
 	plugins: [],
