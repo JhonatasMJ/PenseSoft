@@ -8,6 +8,7 @@ import { ChevronUp } from 'lucide-react';
 import logo from '../assets/imgs/logotipo.svg';
 import { Link as ScrollLink } from 'react-scroll';
 import { styled } from '@mui/material/styles';
+import emailjs from '@emailjs/browser';
 
 import {
 	TextField,
@@ -73,11 +74,48 @@ const Orcamento = () => {
 			recursosImportantes: [],
 			orcamentoERP: '',
 			agendarDemonstracao: '',
+			OrcamentoParcelas: '',
 		},
 	});
 
 	const onSubmit = (data: FormValues) => {
-		console.log(data);
+		const serviceID = 'service_g75bf1b';
+		const templateID = 'template_6qp4zbu';
+		const userID = 'SdbEH0xCjfbib9SFP';
+
+		// Mapeando os dados para o template do EmailJS
+		const templateParams = {
+			nomeEmpresa: data.nomeEmpresa,
+			nomeResponsavel: data.nomeResponsavel,
+			emailContato: data.emailContato,
+			telefone: data.telefone,
+			faturamentoAnual: data.faturamentoAnual,
+			colaboradores: data.colaboradores,
+			modulosERP: data.modulosERP.join(', '), // Convertendo array para string
+			usuarios: data.usuarios,
+			sistemaAtual: data.sistemaAtual,
+			prazoImplementacao: data.prazoImplementacao,
+			conheceuEmpresa: data.conheceuEmpresa,
+			desafioAtual: data.desafioAtual,
+			usouERPAntes: data.usouERPAntes,
+			nomeSistemaERP: data.nomeSistemaERP,
+			recursosImportantes: data.recursosImportantes.join(', '), // Convertendo array para string
+			orcamentoERP: data.orcamentoERP,
+			agendarDemonstracao: data.agendarDemonstracao,
+		};
+
+		emailjs.send(serviceID, templateID, templateParams, userID).then(
+			(response) => {
+				console.log(
+					'Email enviado com sucesso!',
+					response.status,
+					response.text
+				);
+			},
+			(err) => {
+				console.error('Erro ao enviar email:', err);
+			}
+		);
 	};
 
 	const ResponsiveInputLabel = styled(InputLabel)(({ theme }) => ({
@@ -232,13 +270,14 @@ const Orcamento = () => {
 									<InputMask
 										{...field}
 										mask="(99) 99999-9999" // Máscara de telefone (ajuste conforme necessário)
-										onChange={(e) => field.onChange(e)} // Atualiza o valor do campo
+										onChange={(e) => field.onChange(e)}
 									>
 										{() => (
 											<TextField
 												label="Telefone (com WhatsApp)*"
 												variant="outlined"
 												fullWidth
+												inputRef={field.ref}
 												InputProps={{
 													style: { fontSize: '14px' },
 												}}
@@ -660,10 +699,15 @@ const Orcamento = () => {
 								<Controller
 									name="prazoImplementacao"
 									control={control}
+									defaultValue=""
 									rules={{ required: 'Selecione um prazo' }}
 									render={({ field }) => (
 										<Select
 											{...field}
+											value={field.value || ''} // Se não houver valor, use string vazia
+											onChange={(e) =>
+												field.onChange(e.target.value)
+											}
 											label="Prazo para implementação do ERP*"
 										>
 											<MenuItem value="Imediato">
@@ -690,6 +734,7 @@ const Orcamento = () => {
 							<FormControl
 								fullWidth
 								margin="normal"
+								defaultValue=""
 								error={!!errors.usouERPAntes}
 							>
 								<FormLabel>
@@ -882,6 +927,8 @@ const Orcamento = () => {
 									render={({ field }) => (
 										<Select
 											{...field}
+											labelId="orcamento-label"
+											value={field.value || ''}
 											label="Qual é o seu orçamento (mensalidade)?*"
 										>
 											<MenuItem value="500">
