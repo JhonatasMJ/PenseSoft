@@ -54,6 +54,7 @@ const Orcamento = () => {
 		control,
 		handleSubmit,
 		watch,
+		reset,
 		formState: { errors },
 	} = useForm<FormValues>({
 		defaultValues: {
@@ -78,10 +79,20 @@ const Orcamento = () => {
 		},
 	});
 
+	const [isModalOpen, setModalOpen] = useState(false);
+	const [otherResource, setOtherResource] = useState('');
+
 	const onSubmit = (data: FormValues) => {
-		const serviceID = 'service_g75bf1b';
-		const templateID = 'template_6qp4zbu';
-		const userID = 'SdbEH0xCjfbib9SFP';
+		const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+		const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+		const userID = import.meta.env.VITE_EMAILJS_USER_ID;
+
+		emailjs.init(userID);
+
+		let recursos = data.recursosImportantes;
+		if (otherResource) {
+			recursos = [...recursos, otherResource]; // Adiciona o campo "Outros"
+		}
 
 		// Mapeando os dados para o template do EmailJS
 		const templateParams = {
@@ -95,13 +106,12 @@ const Orcamento = () => {
 			usuarios: data.usuarios,
 			sistemaAtual: data.sistemaAtual,
 			prazoImplementacao: data.prazoImplementacao,
-			conheceuEmpresa: data.conheceuEmpresa,
-			desafioAtual: data.desafioAtual,
 			usouERPAntes: data.usouERPAntes,
 			nomeSistemaERP: data.nomeSistemaERP,
-			recursosImportantes: data.recursosImportantes.join(', '), // Convertendo array para string
+			recursosImportantes: recursos.join(', '), // Convertendo array para string
 			orcamentoERP: data.orcamentoERP,
 			agendarDemonstracao: data.agendarDemonstracao,
+			OrcamentoParcelas: data.OrcamentoParcelas,
 		};
 
 		emailjs.send(serviceID, templateID, templateParams, userID).then(
@@ -111,6 +121,10 @@ const Orcamento = () => {
 					response.status,
 					response.text
 				);
+
+				reset();
+
+				setModalOpen(true);
 			},
 			(err) => {
 				console.error('Erro ao enviar email:', err);
@@ -150,7 +164,6 @@ const Orcamento = () => {
 				;
 			</>
 			<Box
-				component="form"
 				sx={{
 					display: 'flex',
 					flexDirection: { xs: 'column', md: 'row' }, // Alinha vertical em telas pequenas e horizontal em maiores
@@ -704,10 +717,6 @@ const Orcamento = () => {
 									render={({ field }) => (
 										<Select
 											{...field}
-											value={field.value || ''} // Se não houver valor, use string vazia
-											onChange={(e) =>
-												field.onChange(e.target.value)
-											}
 											label="Prazo para implementação do ERP*"
 										>
 											<MenuItem value="Imediato">
@@ -791,7 +800,7 @@ const Orcamento = () => {
 								margin="normal"
 								error={!!errors.recursosImportantes}
 							>
-								<FormLabel>
+								<FormLabel className="text-base md:text-lg lg:text-xl">
 									Quais recursos são mais importantes para
 									você?*
 								</FormLabel>
@@ -811,7 +820,7 @@ const Orcamento = () => {
 												sx={{
 													display: 'grid',
 													gridTemplateColumns:
-														'repeat(2, 1fr)', // 3 colunas
+														'repeat(2, 1fr)', // 2 colunas
 													gap: 2, // espaçamento entre os itens
 												}}
 											>
@@ -845,7 +854,7 @@ const Orcamento = () => {
 																			e
 																				.target
 																				.checked
-																		);
+																		); // Exibe o campo "Outros"
 																	}
 																	if (
 																		field.value.includes(
@@ -879,36 +888,27 @@ const Orcamento = () => {
 										</FormGroup>
 									)}
 								/>
+
+								{showOtherField && (
+									<TextField
+										className="text-base md:text-lg lg:text-xl"
+										label="Especifique outros recursos"
+										variant="outlined"
+										margin="normal"
+										fullWidth
+										value={otherResource} // Valor do campo "Outros"
+										onChange={(e) =>
+											setOtherResource(e.target.value)
+										} // Atualiza o valor de "Outros"
+									/>
+								)}
+
 								{errors.recursosImportantes && (
 									<FormHelperText>
 										{errors.recursosImportantes.message}
 									</FormHelperText>
 								)}
 							</FormControl>
-
-							{showOtherField && (
-								<FormControl fullWidth margin="normal">
-									<Controller
-										name="outrosRecursos"
-										control={control}
-										render={({ field }) => (
-											<TextField
-												{...field}
-												label="Quais?"
-												variant="outlined"
-												fullWidth
-												InputProps={{
-													style: { fontSize: '14px' },
-												}}
-												InputLabelProps={{
-													style: { fontSize: '14px' },
-												}}
-												margin="normal"
-											/>
-										)}
-									/>
-								</FormControl>
-							)}
 							<FormControl
 								fullWidth
 								margin="normal"
@@ -976,13 +976,13 @@ const Orcamento = () => {
 							<FormControl
 								fullWidth
 								margin="normal"
-								error={!!errors.prazoImplementacao}
+								error={!!errors.agendarDemonstracao}
 							>
 								<ResponsiveInputLabel>
 									Gostaria de agendar uma demonstração?*
 								</ResponsiveInputLabel>
 								<Controller
-									name="prazoImplementacao"
+									name="agendarDemonstracao"
 									control={control}
 									rules={{
 										required:
@@ -998,9 +998,9 @@ const Orcamento = () => {
 										</Select>
 									)}
 								/>
-								{errors.prazoImplementacao && (
+								{errors.agendarDemonstracao && (
 									<FormHelperText>
-										{errors.prazoImplementacao.message}
+										{errors.agendarDemonstracao.message}
 									</FormHelperText>
 								)}
 							</FormControl>
@@ -1008,7 +1008,7 @@ const Orcamento = () => {
 								sx={{
 									backgroundColor: '#2e5077',
 									marginTop: '1rem',
-									width: '40%',
+									width: { xs: '60%', sm: '40%' },
 									height: '3.5rem',
 									fontSize: { xs: '12px', sm: '14px' }, // Ajusta o tamanho da fonte do botão em diferentes tamanhos de tela
 									padding: {
@@ -1025,9 +1025,28 @@ const Orcamento = () => {
 								type="submit"
 								variant="contained"
 							>
-								ENVIAR ORÇAMENTO
+								SOLICITAR ORÇAMENTO
 							</Button>
 						</form>
+
+						{isModalOpen && (
+							<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+								<div className="bg-white p-4 md:p-8 rounded-lg shadow-lg w-full max-w-sm md:max-w-lg text-center mx-4">
+									<h2 className="text-xl md:text-2xl font-bold mb-4">
+										Email enviado
+									</h2>
+									<p className="mb-6 text-sm md:text-base">
+										Orçamento solicitado com sucesso!
+									</p>
+									<button
+										onClick={() => setModalOpen(false)}
+										className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+									>
+										Fechar
+									</button>
+								</div>
+							</div>
+						)}
 					</div>
 				</section>
 			</Box>
@@ -1038,7 +1057,7 @@ const Orcamento = () => {
 					</div>
 
 					<div className="text-center">
-						<p className="text-xl font-semibold">
+						<p className="text-base font-semibold sm:text-lg md:text-xl lg:text-2xl">
 							PenseSoft © Todos os direitos reservados
 						</p>
 					</div>
@@ -1050,7 +1069,7 @@ const Orcamento = () => {
 								smooth={true}
 								duration={500}
 							>
-								<ChevronUp className="h-6 w-6 text-white relative " />
+								<ChevronUp className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
 							</ScrollLink>
 						</button>
 					</div>
