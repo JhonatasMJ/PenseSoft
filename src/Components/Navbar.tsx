@@ -58,14 +58,14 @@ const Navbar: React.FC = () => {
       </ScrollOrLink>
     </li>
     <li className="cursor-pointer">
-      <ScrollOrLink to="sobre" toggleMenu={toggleMenu}>
-        Sobre
-      </ScrollOrLink>
-    </li>
-    <li className="cursor-pointer">
       <ScrollLink to="vantagens" smooth={true} duration={500} onClick={toggleMenu}>
         Vantagens
       </ScrollLink>
+    </li>
+    <li className="cursor-pointer">
+      <ScrollOrLink to="sobre" toggleMenu={toggleMenu}>
+        Sobre
+      </ScrollOrLink>
     </li>
     <li className="cursor-pointer">
       <ScrollOrLink to="funcionalidades" toggleMenu={toggleMenu}>
