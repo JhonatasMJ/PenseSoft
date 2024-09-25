@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import background from '../assets/imgs/bg-1.webp';
 import { useForm, Controller } from 'react-hook-form';
-import InputMask from 'react-input-mask';
 import { Box, FormHelperText } from '@mui/material';
 import { SimpleTreeView, TreeItem } from '@mui/x-tree-view';
 import { ChevronUp } from 'lucide-react';
@@ -278,33 +277,27 @@ const Orcamento = () => {
 							<Controller
 								name="telefone"
 								control={control}
-								rules={{ required: 'Telefone é obrigatório' }}
+								rules={{
+									required: 'Número de telefone obrigatório',
+								}}
 								render={({ field }) => (
-									<InputMask
-										{...field}
-										mask="(99) 99999-9999" // Máscara de telefone (ajuste conforme necessário)
-										onChange={(e) => field.onChange(e)}
-									>
-										{() => (
-											<TextField
-												label="Telefone (com WhatsApp)*"
-												variant="outlined"
-												fullWidth
-												inputRef={field.ref}
-												InputProps={{
-													style: { fontSize: '14px' },
-												}}
-												InputLabelProps={{
-													style: { fontSize: '14px' },
-												}}
-												margin="normal"
-												error={!!errors.telefone}
-												helperText={
-													errors.telefone?.message
-												}
-											/>
-										)}
-									</InputMask>
+									<TextField
+										label="Telefone (com WhatsApp)*"
+										variant="outlined"
+										fullWidth
+										inputRef={field.ref}
+										value={field.value}
+										onChange={field.onChange}
+										InputProps={{
+											style: { fontSize: '14px' },
+										}}
+										InputLabelProps={{
+											style: { fontSize: '14px' },
+										}}
+										margin="normal"
+										error={!!errors.telefone}
+										helperText={errors.telefone?.message}
+									/>
 								)}
 							/>
 							<FormControl
