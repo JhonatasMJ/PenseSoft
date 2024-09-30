@@ -146,10 +146,10 @@ const Orcamento = () => {
 			<>
 				<section className="bg-ciano relative px-4 " id="orcamento">
 					<div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-1 relative pb-48 items-baseline gap-4">
-						<h2 className="text-2xl font-bold text-cinza mb-0 mt-2">
+						<h2 className="text-md font-bold text-white mb-0 mt-24">
 							Faça um
 						</h2>
-						<h1 className="text-4xl text-white font-bold mt-16">
+						<h1 className="text-4xl text-white font-bold mt-0">
 							Orçamento
 						</h1>
 						<p className="text-white w-full text-base md:text-lg mt-6 md:w-[60%]">
@@ -177,7 +177,7 @@ const Orcamento = () => {
 					boxSizing: 'border-box',
 				}}
 			>
-				<section className="max-w-7xl mx-auto pb-44 pt-20">
+				<section className="max-w-7xl mx-auto pt-20">
 					<div className="bg-white max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[498px_770px] gap-0 relative items-center top-[-250px] h-auto w-full">
 						<img
 							src={background}
@@ -187,7 +187,7 @@ const Orcamento = () => {
 
 						<form
 							onSubmit={handleSubmit(onSubmit)}
-							className="p-6 w-full h-auto max-w-[900px] mx-auto"
+							className="p-6 w-full h-auto max-w-[900px] mx-auto mb-4 md:mb-2 lg:mb-0"
 						>
 							<p className="font-extrabold border-l-8 border-ciano pl-2 mb-8 mt-6 text-lg md:text-xl lg:text-2xl">
 								PREENCHA COM SEUS DADOS
@@ -475,157 +475,123 @@ const Orcamento = () => {
 														label={module}
 													/>
 												))}
-												{/* Adicionando o módulo Financeiro com submódulos */}
-												<SimpleTreeView>
-													<TreeItem
-														itemId="financeiro"
-														label="Financeiro"
-													>
-														<TreeItem
-															itemId="contas"
-															label={
-																<FormControlLabel
-																	control={
-																		<Checkbox
-																			value="Contas a Pagar"
-																			checked={field.value.includes(
-																				'Contas a Pagar'
-																			)}
-																			onChange={(
-																				e
-																			) => {
-																				const value =
-																					e
-																						.target
-																						.value;
-																				if (
-																					field.value.includes(
-																						value
-																					)
-																				) {
-																					field.onChange(
-																						field.value.filter(
-																							(
-																								item: string
-																							) =>
-																								item !==
-																								value
-																						)
-																					);
-																				} else {
-																					field.onChange(
-																						[
-																							...field.value,
-																							value,
-																						]
-																					);
-																				}
-																			}}
-																		/>
-																	}
-																	label="Contas a Pagar"
-																/>
-															}
+
+												<FormControlLabel
+													control={
+														<Checkbox
+															value="Contas a Pagar"
+															checked={field.value.includes(
+																'Contas a Pagar'
+															)}
+															onChange={(e) => {
+																const value =
+																	e.target
+																		.value;
+																if (
+																	field.value.includes(
+																		value
+																	)
+																) {
+																	field.onChange(
+																		field.value.filter(
+																			(
+																				item: string
+																			) =>
+																				item !==
+																				value
+																		)
+																	);
+																} else {
+																	field.onChange(
+																		[
+																			...field.value,
+																			value,
+																		]
+																	);
+																}
+															}}
 														/>
-														<TreeItem
-															itemId="contasReceber"
-															label="Contas a Receber"
-														>
-															<TreeItem
-																itemId="boleto"
-																label={
-																	<FormControlLabel
-																		control={
-																			<Checkbox
-																				value="Emissão de Boleto"
-																				checked={field.value.includes(
-																					'Emissão de Boleto'
-																				)}
-																				onChange={(
-																					e
-																				) => {
-																					const value =
-																						e
-																							.target
-																							.value;
-																					if (
-																						field.value.includes(
-																							value
-																						)
-																					) {
-																						field.onChange(
-																							field.value.filter(
-																								(
-																									item: string
-																								) =>
-																									item !==
-																									value
-																							)
-																						);
-																					} else {
-																						field.onChange(
-																							[
-																								...field.value,
-																								value,
-																							]
-																						);
-																					}
-																				}}
-																			/>
-																		}
-																		label="Emissão de Boleto"
-																	/>
+													}
+													label="Contas a Pagar"
+												/>
+
+												<FormControlLabel
+													control={
+														<Checkbox
+															value="Emissão de Boleto"
+															checked={field.value.includes(
+																'Emissão de Boleto'
+															)}
+															onChange={(e) => {
+																const value =
+																	e.target
+																		.value;
+																if (
+																	field.value.includes(
+																		value
+																	)
+																) {
+																	field.onChange(
+																		field.value.filter(
+																			(
+																				item: string
+																			) =>
+																				item !==
+																				value
+																		)
+																	);
+																} else {
+																	field.onChange(
+																		[
+																			...field.value,
+																			value,
+																		]
+																	);
 																}
-															/>
-															<TreeItem
-																itemId="reguaCobranca"
-																label={
-																	<FormControlLabel
-																		control={
-																			<Checkbox
-																				value="Régua de Cobrança"
-																				checked={field.value.includes(
-																					'Régua de Cobrança'
-																				)}
-																				onChange={(
-																					e
-																				) => {
-																					const value =
-																						e
-																							.target
-																							.value;
-																					if (
-																						field.value.includes(
-																							value
-																						)
-																					) {
-																						field.onChange(
-																							field.value.filter(
-																								(
-																									item: string
-																								) =>
-																									item !==
-																									value
-																							)
-																						);
-																					} else {
-																						field.onChange(
-																							[
-																								...field.value,
-																								value,
-																							]
-																						);
-																					}
-																				}}
-																			/>
-																		}
-																		label="Régua de Cobrança"
-																	/>
+															}}
+														/>
+													}
+													label="Emissão de Boleto"
+												/>
+
+												<FormControlLabel
+													control={
+														<Checkbox
+															value="Régua de Cobrança"
+															checked={field.value.includes(
+																'Régua de Cobrança'
+															)}
+															onChange={(e) => {
+																const value =
+																	e.target
+																		.value;
+																if (
+																	field.value.includes(
+																		value
+																	)
+																) {
+																	field.onChange(
+																		field.value.filter(
+																			(
+																				item: string
+																			) =>
+																				item !==
+																				value
+																		)
+																	);
+																} else {
+																	field.onChange(
+																		[
+																			...field.value,
+																			value,
+																		]
+																	);
 																}
-															/>
-														</TreeItem>
-													</TreeItem>
-												</SimpleTreeView>
+															}}
+														/>
+													}
+													label="Régua de Cobrança"
+												/>
 											</Box>
 											{errors.modulosERP && (
 												<FormHelperText>

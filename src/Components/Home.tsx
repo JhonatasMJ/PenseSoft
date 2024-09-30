@@ -2,11 +2,14 @@ import { Plus } from 'lucide-react';
 import woman from '../assets/imgs/womanHome.webp';
 import { motion } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 	return (
-		<section className="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-2  pb-24 pt-10 md:pb-44 md:pt-20 items-center " id="inicio">
+		<section
+			className="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-2  pb-24 pt-10 md:pb-44 md:pt-20 items-center "
+			id="inicio"
+		>
 			<motion.div
 				className="flex flex-col justify-center mt-14"
 				initial={{ opacity: 0, x: -50 }}
@@ -14,9 +17,6 @@ const Home = () => {
 				transition={{ duration: 1 }}
 				viewport={{ once: true }}
 			>
-				<span className="text-lg font-semibold text-black">
-					Bem-vindo(a)👋
-				</span>
 				<h1 className=" text-3xl md:text-5xl  text-cinza font-bold mt-2">
 					Flexível, configurável e feito para o seu{' '}
 					<span className="bg-ciano text-white px-1">sucesso.</span>
@@ -49,15 +49,12 @@ const Home = () => {
 						</ScrollLink>
 					</motion.button>
 
-					
 					<motion.button
 						className="w-max bg-azul text-white font-bold rounded-md px-6 py-2 mt-14 text-sm  md:px-12 md:py-3"
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
-						<Link to="/orcamento">
-							Orçamento
-						</Link>
+						<Link to="/orcamento">Orçamento</Link>
 					</motion.button>
 				</div>
 			</motion.div>
