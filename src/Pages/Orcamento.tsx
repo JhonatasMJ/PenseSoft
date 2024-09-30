@@ -2,7 +2,6 @@ import { useState } from 'react';
 import background from '../assets/imgs/bg-1.webp';
 import { useForm, Controller } from 'react-hook-form';
 import { Box, FormHelperText } from '@mui/material';
-import { SimpleTreeView, TreeItem } from '@mui/x-tree-view';
 import { ChevronUp } from 'lucide-react';
 import logo from '../assets/imgs/logotipo.svg';
 import { Link as ScrollLink } from 'react-scroll';
