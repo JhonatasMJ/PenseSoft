@@ -46,42 +46,42 @@ const Navbar: React.FC = () => {
 				</div>
 
 				<nav
-  className={`${
-    isOpen ? 'block' : 'hidden'
-  } lg:flex flex-1 justify-center items-center text-white gap-6 font-semibold text-lg lg:static absolute top-[70px] left-0 w-full lg:w-auto lg:bg-transparent bg-ciano transition-all duration-300 ease-in-out navbar-links`}
-  style={{ zIndex: isOpen ? 40 : 10 }}
->
-  <ul className="flex flex-col lg:flex-row gap-6 lg:items-center text-center lg:text-left p-4 lg:p-0 navbar-links">
-    <li className="cursor-pointer">
-      <ScrollOrLink to="inicio" toggleMenu={toggleMenu}>
-        Inicio
-      </ScrollOrLink>
-    </li>
-    <li className="cursor-pointer">
-      <ScrollLink to="vantagens" smooth={true} duration={500} onClick={toggleMenu}>
-        Vantagens
-      </ScrollLink>
-    </li>
-    <li className="cursor-pointer">
-      <ScrollOrLink to="sobre" toggleMenu={toggleMenu}>
-        Sobre
-      </ScrollOrLink>
-    </li>
-    <li className="cursor-pointer">
-      <ScrollOrLink to="funcionalidades" toggleMenu={toggleMenu}>
-        Funcionalidades
-      </ScrollOrLink>
-    </li>
+					className={`${
+						isOpen ? 'block' : 'hidden'
+					} lg:flex flex-1 justify-center items-center text-white gap-6 font-semibold text-lg lg:static absolute top-[70px] left-0 w-full lg:w-auto lg:bg-transparent bg-ciano transition-all duration-300 ease-in-out navbar-links`}
+					style={{ zIndex: isOpen ? 40 : 10 }}
+				>
+					<ul className="flex flex-col lg:flex-row gap-6 lg:items-center text-center lg:text-left p-4 lg:p-0 navbar-links">
+						<li className="cursor-pointer">
+							<ScrollOrLink to="inicio" toggleMenu={toggleMenu}>
+								Inicio
+							</ScrollOrLink>
+						</li>
+						<li className="cursor-pointer">
+							<ScrollLink to="vantagens" smooth={true} duration={500} onClick={toggleMenu}>
+								Vantagens
+							</ScrollLink>
+						</li>
+						<li className="cursor-pointer">
+							<ScrollOrLink to="sobre" toggleMenu={toggleMenu}>
+								Sobre
+							</ScrollOrLink>
+						</li>
+						<li className="cursor-pointer">
+							<ScrollOrLink to="funcionalidades" toggleMenu={toggleMenu}>
+								Funcionalidades
+							</ScrollOrLink>
+						</li>
 
-    <li className="lg:hidden mt-4">
-      <Link to="/orcamento">
-        <button className="bg-azul text-white font-bold px-4 py-2 rounded">Orçamento</button>
-      </Link>
-    </li>
-  </ul>
-</nav>
+						<li className="lg:hidden mt-4">
+							<Link to="/orcamento" onClick={toggleMenu}>
+								<button className="bg-azul text-white font-bold px-4 py-2 rounded">Orçamento</button>
+							</Link>
+						</li>
+					</ul>
+				</nav>
 
-				<Link to="/orcamento" className="hidden lg:block">
+				<Link to="/orcamento" className="hidden lg:block" onClick={toggleMenu}>
 					<button className="bg-azul text-white font-bold px-4 py-2 rounded transition-all duration-300 ease-in hover:scale-110 hover:bg-azul-hover">
 						Orçamento
 					</button>
