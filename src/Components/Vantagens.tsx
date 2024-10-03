@@ -62,13 +62,13 @@ const Vantagens = () => {
 				<div>
 					<span className="text-azul font-semibold">Saiba</span>
 					<h2 className="text-3xl  md:text-4xl font-bold text-white mt-2">
-						Porque devo escolher o nosso sistema ERP?
+						Porque você deve escolher nosso sistema ERP
 					</h2>
-					<p className="text-lg text-cinza mt-14">
+					<p className="text-lg text-white mt-14">
 						Nosso ERP é projetado para ser flexível e configurável,
 						moldando-se às suas regras de negócio.
 					</p>
-					<p className="text-lg text-cinza mt-12">
+					<p className="text-lg text-white mt-12">
 						Com isso, você obtém uma solução que realmente funciona
 						para você, sem comprometer os processos que tornam sua
 						empresa única.
@@ -82,7 +82,6 @@ const Vantagens = () => {
 							VEJA O QUANTO VOCÊ PODE ECONOMIZAR
 						</Link>
 					</motion.button>
-		
 				</div>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-ciano-claro p-6 rounded-md relative">

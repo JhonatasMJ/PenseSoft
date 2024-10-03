@@ -22,8 +22,7 @@ const Home = () => {
 					<span className="bg-ciano text-white px-1">sucesso.</span>
 				</h1>
 				<p className="text-cinza text-lg mt-10">
-					Um ERP que se adapta ao seu negócio, flexível, configurável
-					e feito para o seu sucesso. A solução que seu negócio
+					Um ERP que se adapta ao seu negócio. A solução que você
 					precisa, com atendimento humanizado.
 				</p>
 				<div className="flex gap-8 mt-4">
