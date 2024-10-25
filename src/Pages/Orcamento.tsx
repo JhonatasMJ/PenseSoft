@@ -100,13 +100,13 @@ const Orcamento = () => {
 			telefone: data.telefone,
 			faturamentoAnual: data.faturamentoAnual,
 			colaboradores: data.colaboradores,
-			modulosERP: data.modulosERP.join(', '), // Convertendo array para string
+			modulosERP: data.modulosERP.join(', '),
 			usuarios: data.usuarios,
 			sistemaAtual: data.sistemaAtual,
 			prazoImplementacao: data.prazoImplementacao,
 			usouERPAntes: data.usouERPAntes,
 			nomeSistemaERP: data.nomeSistemaERP,
-			recursosImportantes: recursos.join(', '), // Convertendo array para string
+			recursosImportantes: recursos.join(', '),
 			orcamentoERP: data.orcamentoERP,
 			agendarDemonstracao: data.agendarDemonstracao,
 			OrcamentoParcelas: data.OrcamentoParcelas,
